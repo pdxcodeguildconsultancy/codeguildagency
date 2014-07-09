@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block body_block %}
+
+<div id="partner_page_banner" class="jumbotron">
+<div class="container">
+  <div id="front_page_notice" class="roundbox applybox" style="margin-top: -100px;">
+    <h1>Partnerships</h1>
+    <p>Partner with PDX Code guild, build relationships with junior developers and help shape the future of the Oregon tech ecosystem.</p>
+    <p class="text-right">
+    <a href="mailto:Sheri@PDXCodeGuild.com?subject=Partnering with PDX Code Guild&body=I'd like to partner with PDX Code guild." class="btn btn-primary btn-lg">Partner</a>
+    </p>
+  </div>
+</div>
+</div>
+<div>
+  <p class="text-center"> <a href="http://www.donglekong.com/"target="_blank"> <img style="display: inline; margin: 5px 5px;" class="img-responsive partner-logo" alt="DongleKong Logo" src="{% static 'img/dk.png' %}"/></a> <a href="https://www.startupdigest.com/digests/portland" target="_blank"> <img style="display: inline; margin: 5px 5px;" class="img-responsive partner-logo" alt="Startup Digest PDX Logo" src="{% static 'img/sdp.png' %}"/></a> <a href="http://teamtreehouse.com/"target="_blank"> <img style="display: inline; margin: 5px 5px;" class="img-responsive partner-logo" alt="Treehouse Logo" src="{% static 'img/th.png' %}"/></a> <a href="http://portland.startupweekend.org/"target="_blank"> <img style="display: inline; margin: 5px 5px;" class="img-responsive partner-logo" alt="Startup Weekend Logo" src="{% static 'img/sw.png' %}"/></a></p>
+</div>
+<p>&nbsp;</p>
+<p>{% endblock %}</p>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block body_block %}
+
+<br/><br/>
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" style="float:left"> <img src="{% static 'img/sheri.jpg' %}" alt="Photo of Sheri Dover" class="img-team img-thumbnail"/>
+        <h3>Sheri Dover</h3>
+        <p>Director</p>
+        <ul>
+          <li>Email:<a href="mailto:sheri@pdxcodeguild.com"> Sheri Dover (sheri@pdxcodeguild.com)</a></li>
+        </ul>
+        <p>A long-time entrepreneur, Sheri works to empower others and strengthen the Oregon economy. Businesses founded by Sheri include a public market that served as a low-barrier incubator and a coworking space that supported small businesses. Sheri's extensive volunteer work includes 3 years as an Organizer for Portland Startup Weekend and a volunteer for TiE Oregon.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+
+{% endblock %}
