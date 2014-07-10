@@ -21,4 +21,5 @@ urlpatterns = patterns('',
         paginate_by=5,
         model=Tag,
         )),
+    url(r'^new_post/$', 'pdx_blog.views.new_post', name='new post'),
 )

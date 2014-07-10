@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="hero-unit">
+    <h1 style="text-align: center">Add a Post</h1>
+    <br/>
+    <div class="container">
+
+
+{% crispy form %}
+    </div>
+</div>
+{% endblock %}

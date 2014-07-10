@@ -1,6 +1,21 @@
-from django.shortcuts import render
+from django.template import RequestContext
+from django.shortcuts import render_to_response, HttpResponseRedirect
 from django.views.generic import ListView
-from pdx_blog.models import Category, Post, Tag
+from pdx_blog.models import Category, Post, Tag, PostForm
+
+
+def new_post(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return HttpResponseRedirect('/blog/')
+        else:
+            print form.errors
+    else:
+        form = PostForm()
+    return render_to_response('pdx_blog/new_post.html', {'form': form}, context)
 
 
 class SubListView(ListView):
@@ -9,6 +24,7 @@ class SubListView(ListView):
         context['categories'] = Category.objects.filter()
         context['tags'] = Tag.objects.filter()
         return context
+
 
 class CategoryListView(ListView):
     def get_queryset(self):
