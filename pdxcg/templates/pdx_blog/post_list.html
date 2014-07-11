@@ -41,12 +41,21 @@
         {% else %}
         There are no Categories yet.
         {% endif %}
+        <h3>Tags</h3>
         {% if tags %}
-          <h3>Tags</h3>
-          {% for tag in tags %} <a href="/blog{{ tag.get_absolute_url }}">{{ tag.name }}</a> <br>{% endfor %} </div>
+          {% for tag in tags %} <a href="/blog{{ tag.get_absolute_url }}">{{ tag.name }}</a> <br>{% endfor %}
       {% else %}
       There are no Tags yet.
       {% endif %}
+      <h3>Posts</h3>
+      {% if object_list %}
+      {% for post in object_list %}
+      <a href="/blog{{ post.get_absolute_url }}">{{ post.title }}</a><br>
+      {% endfor %}
+      {% else %}
+      There are no posts yet.
+      {% endif %}
+        </div>
       </div>
       <div class="row">
         <div class="col-md-3"> {% if page_obj.has_previous %} <a href="/blog/{{ page_obj.previous_page_number }}/">Previous Page</a> {% endif %} </div>
