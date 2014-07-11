@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+
 {% block content %}
+
 <div class="hero-unit">
     <h1 style="text-align: center">Add a Post</h1>
     <br/>
     <div class="container">
-
-
+{{ form.media }}
 {% crispy form %}
+
     </div>
 </div>
+<script type="text/javascript">
+	$(document).ready( function() {
+		$("#id_title").stringToSlug();
+	});
+</script>
 {% endblock %}

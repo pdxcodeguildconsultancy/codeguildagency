@@ -43,8 +43,17 @@ INSTALLED_APPS = (
     'sekizai',
     'pdx_blog',
     'markdown',
+    'markitup',
     'pybb',
 )
+
+MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
+
+MARKITUP_SET = 'markitup/sets/markdown'
+
+MARKITUP_SKIN = 'markitup/skins/markitup'
+
+JQUERY_URL = None
 
 COMMENTS_APP = 'fluent_comments'
 

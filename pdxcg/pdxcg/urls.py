@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     url(r'^blog/', include('pdx_blog.urls')),
     url(r'^blog/comments/', include('fluent_comments.urls')),
     url(r'^articles/comments/', include('django.contrib.comments.urls')),
-
+    url(r'^markitup/', include('markitup.urls'))
 )
 
 if settings.DEBUG:
