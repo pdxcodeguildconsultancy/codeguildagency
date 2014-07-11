@@ -145,4 +145,10 @@ def value(request):
 
     return render_to_response('value.html', context_dict, context)
 
+def ppm(request):
+    context = RequestContext(request)
+    context_dict = {}
+
+    return render_to_response('ppm.html', context_dict, context)
+
 
