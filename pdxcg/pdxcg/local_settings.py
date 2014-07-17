@@ -31,3 +31,9 @@ MEDIA_ROOT = '/websites/pdxcodeguild.com/media/'
 MEDIA_URL = '/media/'
 
 PYBB_ATTACHMENT_UPLOAD_TO = '/websites/pdxcodeguild.com/media/attachments/'
+
+EMAIL_HOST = 'smtp.webfaction.com'
+EMAIL_HOST_USER = 'pdxcodeguild'
+EMAIL_HOST_PASSWORD = 'codeguildrools'
+DEFAULT_FROM_EMAIL = 'pdxcodeguild@pdxcodeguild.com'
+SERVER_EMAIL = 'pdxcodeguild@pdxcodeguild.com'

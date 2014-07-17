@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'markdown',
     'markitup',
     'pybb',
+    'froala_editor',
 )
 
 MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
