@@ -1,8 +1,8 @@
 from django import forms
-from crispy_forms.helper import FormHelper, Layout
-from crispy_forms.layout import Submit
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit, Fieldset, Layout, HTML
 from crispy_forms.bootstrap import InlineRadios
-
+from froala_editor.widgets import FroalaEditor
 
 class PostForm(forms.Form):
     full_name = forms.CharField(max_length=256)
@@ -58,17 +58,105 @@ class Contact(forms.Form):
     )
 
 
-class Contact(forms.Form):
+class Comment(forms.Form):
     def __init__(self, *args, **kwargs):
-        super(Contact, self).__init__(*args, **kwargs)
+        super(Comment, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_class = 'form-horizontal'
-        self.helper.label_class = 'col-lg-3'
+        self.helper.label_class = 'col-lg-3 smalltext'
         self.helper.field_class = 'col-lg-7'
-        self.helper.layout = Layout("Name", 'email_address', InlineRadios('first'), InlineRadios('second'),
-                                    InlineRadios('third'), InlineRadios('fourth'), InlineRadios('fifth'),
-                                    InlineRadios('sixth'), InlineRadios('seventh'), InlineRadios('eighth'),
-                                    InlineRadios('ninth'), InlineRadios('tenth'), 'message1', 'message1')
+        self.helper.layout = Layout(
+            Fieldset('',
+                "name",
+                'email_address',
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                HTML("""
+                    <p style="text-align: center;">Please rate the following on a scale of 1 to 4.</p>
+                    <p style="text-align: center;">1 = Poor, 2 = Fair, 3 = Good, 4 = Excellent</p>
+                    """),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                InlineRadios('first'),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                InlineRadios('second'),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                InlineRadios('third'),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                InlineRadios('fourth'),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                InlineRadios('fifth'),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                InlineRadios('sixth'),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                InlineRadios('seventh'),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                InlineRadios('eighth'),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                InlineRadios('ninth'),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div>
+                    """),
+                InlineRadios('tenth'),
+                HTML("""
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
+                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
+                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
+                 #fff);"></div><br>
+                    """),
+                'message1',
+                'message2',))
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Submit'))
 
@@ -168,7 +256,7 @@ class Contact(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Accessibility of teachers for doubts and clarifications outside the class",
+        label = "Content and length of lectures:",
         widget = forms.RadioSelect,
     )
 
