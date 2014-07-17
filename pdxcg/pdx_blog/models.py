@@ -9,7 +9,7 @@ from django import forms
 from crispy_forms.helper import FormHelper, Layout
 from crispy_forms.layout import Submit
 from markitup.widgets import MarkItUpWidget
-
+from froala_editor.widgets import FroalaEditor
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
@@ -83,7 +83,7 @@ class PostForm(ModelForm):
         model = Post
 
     text = forms.CharField(
-        widget=MarkItUpWidget(),
+        widget=FroalaEditor,
         label="Article",
     )
 

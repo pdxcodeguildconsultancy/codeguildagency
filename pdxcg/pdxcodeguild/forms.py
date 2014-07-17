@@ -161,13 +161,13 @@ class Comment(forms.Form):
         self.helper.add_input(Submit('submit', 'Submit'))
 
     name = forms.CharField(
-        label="Name:",
+        label="Name (optional):",
         max_length=80,
         required=False,
     )
 
     email_address = forms.EmailField(
-        label="Email:",
+        label="Email (optional):",
         max_length=80,
         required=False,
     )
@@ -179,7 +179,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Depth of the Knowledge of the subject",
+        label = "Depth of the Knowledge of the subject:",
+        required=False,
         widget = forms.RadioSelect,
     )
 
@@ -190,7 +191,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Presentation Skills",
+        label = "Presentation Skills:",
+        required=False,
         widget = forms.RadioSelect,
     )
 
@@ -201,7 +203,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Sincerity, Commitment, Regularity and Punctuality",
+        label = "Sincerity, Commitment, Regularity and Punctuality:",
+        required=False,
         widget = forms.RadioSelect,
     )
 
@@ -212,7 +215,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Syllabus Coverage",
+        label = "Syllabus Coverage:",
+        required=False,
         widget = forms.RadioSelect,
     )
 
@@ -223,7 +227,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to Clarify doubts, teaching with relevant examples",
+        label = "Ability to Clarify doubts, teaching with relevant examples:",
+        required=False,
         widget = forms.RadioSelect,
     )
 
@@ -234,7 +239,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to relate the course to real life situations",
+        label = "Ability to relate the course to real life situations:",
+        required=False,
         widget = forms.RadioSelect,
     )
 
@@ -245,7 +251,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to generate interest",
+        label = "Ability to generate interest:",
+        required=False,
         widget = forms.RadioSelect,
     )
 
@@ -257,6 +264,7 @@ class Comment(forms.Form):
             ('4', "4"),
         ),
         label = "Content and length of lectures:",
+        required=False,
         widget = forms.RadioSelect,
     )
 
@@ -267,7 +275,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to command and control the class",
+        label = "Ability to command and control the class:",
+        required=False,
         widget = forms.RadioSelect,
     )
 
@@ -278,7 +287,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Overall teacher rating",
+        label = "Overall teacher rating:",
+        required=False,
         widget = forms.RadioSelect,
     )
 
