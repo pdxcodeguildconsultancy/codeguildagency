@@ -34,7 +34,7 @@
           </ul>
         </li>
         {% else %}
-        <li> <a href="/accounts/login/">{% trans "Log in" %}</a> </li>
+        <li> <a href="/accounts/login/?next={{ next }}">{% trans "Log in" %}</a> </li>
         <li> <a href="/accounts/signup/">{% trans "Sign up" %}</a> </li>
         {% endif %}
       </ul>
