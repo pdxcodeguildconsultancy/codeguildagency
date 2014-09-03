@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
-
 {% load url from future %}
-
 {% load i18n %}
-
 
 {% block title %}{{ PYBB_DEFAULT_TITLE }}{% endblock title %}
 {% block body_block %}
-<div class="container" style="margin-top: 0px;">
+<section class="wrapper style1">
+  <div class="container">
+    <div id="content">
 {% block breadcrumb %}
     {% with extra_crumb="Forum" %}{% include "pybb/breadcrumb.html" %}{% endwith %}
 {% endblock %}
@@ -29,6 +28,8 @@
             {% trans "Mark all forums as read" %}
             </a>
         </div>
-        </div>
+    </div>
+  </div>
+</section>
     {% endif %}
 {% endblock %}

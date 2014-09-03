@@ -1,32 +1,22 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load i18n sekizai_tags %}
-
-
 {% block body_block %}
-
-<div id="apply_page_banner" class="jumbotron">
-<div class="container">
-<div id="front_page_notice" class="roundbox applybox" style="margin-top: -100px;">
-  
-<h1 class="page-header">{% trans "Monday Python Flying Circus" %}</h1>
-
-
-<p>
-Join us on Monday evenings at 6 pm for Monday Python Flying Circus! This free 
-Meetup is open to programmers of all levels. (Seriously, this is a beginner-friendly 
-group. And for experienced developers, it’s a great chance to mentor and connect 
-with other developers.) </p>
-
-<p>
-So bring your laptop and any projects you’re working on, and get ready to talk 
-Python, Django, JavaScript, jQuery, SQL, CSS ad HTML. </p>
-
-<p>
-RSVP on our <a href="http://www.meetup.com/pdxpython/events/">Meetup page</a> to let us know you’re coming and connect with other 
-members of our group! </p>
+<section class="wrapper style1">
+  <div class="container">
+    <div id="content">
+      <h2 class="page-header" style="text-align:center">{% trans "Monday Python Flying Circus" %}</h2>
+      <article>
+        <p> Join us on Monday evenings at 6 pm for Monday Python Flying Circus! This free 
+          Meetup is open to programmers of all levels. (Seriously, this is a beginner-friendly 
+          group. And for experienced developers, it’s a great chance to mentor and connect 
+          with other developers.) </p>
+        <p> So bring your laptop and any projects you’re working on, and get ready to talk 
+          Python, Django, JavaScript, jQuery, SQL, CSS ad HTML. </p>
+        <p> RSVP on our <a href="http://www.meetup.com/pdxpython/events/">Meetup page</a> to let us know you’re coming and connect with other 
+          members of our group! </p>
+      </article>
+    </div>
   </div>
-
-</div>
-</div>
+</section>
 {% endblock %}

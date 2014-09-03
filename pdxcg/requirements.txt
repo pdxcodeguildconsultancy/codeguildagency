@@ -8,8 +8,7 @@ django-annoying==0.8.0
 django-classy-tags==0.5.1
 django-crispy-forms==1.4.0
 django-fluent-comments==0.9.2
-django-froala-editor==0.8.7
-django-markitup==2.2.1
+django-markitup==2.2
 django-sekizai==0.7
 django-threadedcomments==0.9.0
 oauthlib==0.6.3

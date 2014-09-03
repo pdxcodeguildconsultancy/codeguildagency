@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load i18n sekizai_tags %}
-
-
 {% block body_block %}
-<div id="apply_page_banner" class="jumbotron">
+<section class="wrapper style1">
   <div class="container">
-    <div id="front_page_notice" class="roundbox applybox" style="margin-top: -100px;">
-      <h1 class="page-header">{% trans "Contact Us" %}</h1>
+    <div id="content">
+    
+      <h2 style="text-align:center">{% trans "Contact Us" %}</h2>
       <p> Email Our Director: <a href="mailto:sheri@pdxcodeguild.com">Sheri@PDXCodeGuild.com</a> <br/>
         Twitter: <a href="https://twitter.com/pdxcodeguild"target="_blank">@PDXCodeGuild</a> <br/>
         Facebook: <a href="https://www.facebook.com/PDXCodeGuild"target="_blank">PDX Code Guild</a> <br/>
@@ -19,5 +18,5 @@
       <p><a href="http://pdxcodeguild.com/static/img/pdxmap.png"><img src="{% static 'img/_tn-pdxmap.png' %}" alt=""/></a></p>
     </div>
   </div>
-</div>
+</section>
 {% endblock %}

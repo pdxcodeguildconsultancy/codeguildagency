@@ -7,8 +7,10 @@
 {% block title %}{% trans "Profile editing" %}{% endblock title %}
 
 {% block body_block %}
-	<div class="container" style="margin-top: 60px;">
-    <h1>{% trans "Profile editing" %}</h1>
+<section class="wrapper style1">
+  <div class="container">
+    <div id="content">
+    <h2>{% trans "Profile editing" %}</h2>
     {% include 'pybb/avatar.html' with user=user %}
     <form method="post" enctype="multipart/form-data" class="profile-edit">
         {% csrf_token %}
@@ -18,7 +20,7 @@
             <p>{% include "pybb/_button_save.html" %}</p>
         </fieldset>
     </form>
-    <h1>{% trans "Subscriptions on topics" %}</h1>
+    <h2>{% trans "Subscriptions on topics" %}</h2>
     <ul>
         {% for sub in user.subscriptions.all %}
             <li>
@@ -31,4 +33,6 @@
         {% endfor %}
     </ul>
     </div>
+  </div>
+</section>
 {% endblock %}

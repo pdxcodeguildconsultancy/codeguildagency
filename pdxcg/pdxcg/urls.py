@@ -25,13 +25,11 @@ urlpatterns = patterns('',
     url(r'^advisors/$', 'pdxcodeguild.views.advisors', name='advisors'),
     url(r'^value/$', 'pdxcodeguild.views.value', name='value'),
     url(r'^ppm/$', 'pdxcodeguild.views.ppm', name='ppm'),
-    url(r'^student_comment/$', 'pdxcodeguild.views.student_comment', name='student_comment'),
     (r'^forum/', include('pybb.urls', namespace='pybb')),
     url(r'^blog/', include('pdx_blog.urls')),
     url(r'^blog/comments/', include('fluent_comments.urls')),
     url(r'^articles/comments/', include('django.contrib.comments.urls')),
-    url(r'^markitup/', include('markitup.urls')),
-    url(r'^froala_editor/', include('froala_editor.urls')),
+    url(r'^markitup/', include('markitup.urls'))
 )
 
 if settings.DEBUG:

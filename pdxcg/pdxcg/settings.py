@@ -20,7 +20,7 @@ MANAGERS = ADMINS
 SECRET_KEY = open(os.path.expanduser('~/.gallery-secret')).read().strip()
 
 ALLOWED_HOSTS = []
-
+COMPRESS_ENABLED = True
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -45,8 +45,12 @@ INSTALLED_APPS = (
     'markdown',
     'markitup',
     'pybb',
-    'froala_editor',
+    'compressor',
 )
+
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.template.TemplateFilter',
+]
 
 MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
 
@@ -84,6 +88,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 PYBB_ATTACHMENT_SIZE_LIMIT = 40960 * 40960
