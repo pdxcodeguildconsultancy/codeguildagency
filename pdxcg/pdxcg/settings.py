@@ -19,8 +19,11 @@ MANAGERS = ADMINS
 
 SECRET_KEY = open(os.path.expanduser('~/.gallery-secret')).read().strip()
 
-ALLOWED_HOSTS = []
-COMPRESS_ENABLED = True
+ALLOWED_HOSTS = [
+    'pdxcodeguild.com',
+    'www.pdxcodeguild.com',
+]
+
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -46,11 +49,17 @@ INSTALLED_APPS = (
     'markitup',
     'pybb',
     'compressor',
+    'django.contrib.sitemaps',
 )
 
-COMPRESS_JS_FILTERS = [
-    'compressor.filters.template.TemplateFilter',
-]
+COMPRESS_ENABLED = True
+
+COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter',
+    ]
+
+COMPRESS_JS_FILTERS = ['compressor.filters.template.TemplateFilter',
+                       'compressor.filters.jsmin.JSMinFilter',
+                       ]
 
 MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
 
@@ -71,6 +80,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'pybb.middleware.PybbMiddleware',
 )
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',

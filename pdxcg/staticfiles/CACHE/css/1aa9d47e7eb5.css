@@ -1087,7 +1087,7 @@ li.comment-wrapper {
 /* Banner */
 
 	#banner {
-		background-image: url('/static/images/portland-01.jpg');
+		background-image: url('/static/images/portland-01.png');
 		background-position: center center;
 		background-size: cover;
 		height: 300px;

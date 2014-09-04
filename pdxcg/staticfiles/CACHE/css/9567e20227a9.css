@@ -414,7 +414,7 @@ li.comment-wrapper {
 		-o-transition: border-color 0.2s ease-in-out;
 		-ms-transition: border-color 0.2s ease-in-out;
 		transition: border-color 0.2s ease-in-out;
-		background: #fff;
+		background: #FFAF73;
 		border: solid 1px #e0e0e0;
 		border-radius: 5px;
 		color: inherit;
@@ -773,7 +773,9 @@ li.comment-wrapper {
 	.box.highlight {
 		text-align: center;
 	}
-
+	.box.highlight2 {
+		text-align: left;
+	}
 	.box.post {
 		position: relative;
 		margin: 0 0 2em 0;
@@ -1016,11 +1018,11 @@ li.comment-wrapper {
 
 			.wrapper.style3 .button {
 				background: white;
-				color: #ffffff;
+				color: #474747;
 			}
 
 				.wrapper.style3 .button:hover {
-					color: #ffffff !important;
+					color: #f57b20 !important;
 				}
 
 /* CTA */
@@ -1080,6 +1082,23 @@ li.comment-wrapper {
 			text-align: center;
 			font-size: 0.9em;
 		}
+		
+img.img-team {
+  width: 70%;
+}
+
+.img-thumbnail {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+  padding: 4px;
+  line-height: 1.428571429;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+}
 /*
 	Arcana by Pixelarity
 	pixelarity.com @pixelarity

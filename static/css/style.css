@@ -712,7 +712,7 @@
 /* Banner */
 
 	#banner {
-		background-image: url("../images/portland-01.jpg");
+		background-image: url("../images/portland-01.png");
 		background-position: center center;
 		background-size: cover;
 		height: 300px;
@@ -852,6 +852,10 @@
 		
 img.img-team {
   width: 70%;
+}
+
+img.img-team2 {
+  width: 100%;
 }
 
 .img-thumbnail {

@@ -1,7 +1,14 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticViewSitemap
+
 admin.autodiscover()
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
@@ -26,10 +33,11 @@ urlpatterns = patterns('',
     url(r'^value/$', 'pdxcodeguild.views.value', name='value'),
     url(r'^ppm/$', 'pdxcodeguild.views.ppm', name='ppm'),
     (r'^forum/', include('pybb.urls', namespace='pybb')),
-    url(r'^blog/', include('pdx_blog.urls')),
+    url(r'^blog/', include('pdx_blog.urls', namespace='blog')),
     url(r'^blog/comments/', include('fluent_comments.urls')),
     url(r'^articles/comments/', include('django.contrib.comments.urls')),
-    url(r'^markitup/', include('markitup.urls'))
+    url(r'^markitup/', include('markitup.urls')),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 )
 
 if settings.DEBUG:
