@@ -18,14 +18,14 @@ DATABASES = {
 }
 
 
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = '../staticfiles/'
 
 STATICFILES_DIRS = (
     STATIC_DIRS,
 )
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/websites/pdxcodeguild.com/media/'
+MEDIA_ROOT = '../../media/'
 MEDIA_URL = '/media/'
 
-PYBB_ATTACHMENT_UPLOAD_TO = '/websites/pdxcodeguild.com/media/attachments/'
+PYBB_ATTACHMENT_UPLOAD_TO = '../../media/attachments/'
