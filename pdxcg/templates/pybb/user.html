@@ -7,7 +7,9 @@
 {% block title %}{{ target_user.get_username }}{% endblock %}
 
 {% block body_block %}
-<div class="container" style="margin-top: 60px;">
+<section class="wrapper style1">
+  <div class="container">
+    <div id="content">
     {% pybb_get_profile target_user as target_profile %}
     <h1>{{ target_user }}</h1>
     <div class="userinfo">
@@ -47,5 +49,7 @@
             <a href="{% url 'pybb:edit_profile' %}">{% trans 'Edit' %}</a>
         {% endif %}
     </div>
-</div>
+    </div>
+  </div>
+</section>
 {% endblock %}

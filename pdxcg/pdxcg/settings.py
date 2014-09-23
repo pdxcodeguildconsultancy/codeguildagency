@@ -19,7 +19,10 @@ MANAGERS = ADMINS
 
 SECRET_KEY = open(os.path.expanduser('~/.gallery-secret')).read().strip()
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'pdxcodeguild.com',
+    'www.pdxcodeguild.com',
+]
 
 
 INSTALLED_APPS = (
@@ -45,8 +48,18 @@ INSTALLED_APPS = (
     'markdown',
     'markitup',
     'pybb',
-    'froala_editor',
+    'compressor',
+    'django.contrib.sitemaps',
 )
+
+COMPRESS_ENABLED = True
+
+COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter',
+    ]
+
+COMPRESS_JS_FILTERS = ['compressor.filters.template.TemplateFilter',
+                       'compressor.filters.jsmin.JSMinFilter',
+                       ]
 
 MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
 
@@ -68,6 +81,12 @@ MIDDLEWARE_CLASSES = (
     'pybb.middleware.PybbMiddleware',
 )
 
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
@@ -84,6 +103,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 PYBB_ATTACHMENT_SIZE_LIMIT = 40960 * 40960

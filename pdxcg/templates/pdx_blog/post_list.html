@@ -2,13 +2,15 @@
 {% load custom_markdown %}
 {% load threadedcomments_tags %}
 {% load markitup_tags %}
-    {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 style="text-align: center">PDX Code Guild Blog</h1>
-      <div class="row">
-        <div class="col-md-9">{% for post in object_list %}
+{% block content %}
+
+<section class="wrapper style1">
+  <div class="container">
+    <div id="content">
+    <h2 style="text-align: center">PDX Code Guild Blog</h2>
+    
+      <div class="row double">
+        <div class="9u">{% for post in object_list %}
           <div class="post"> {{ post.content|render_markup }}
             <h1><a href="/blog{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
             <h3>{{ post.pub_date }}</h3>
@@ -33,7 +35,7 @@
     background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));"></div>
           {% endfor %} </div>
-        <div class="col-md-3">
+        <div class="3u">
           <h3>Categories</h3>
         {% if categories %}
           {% for category in categories %} <a href="/blog{{ category.get_absolute_url }}">{{ category.name }}</a><br>
@@ -58,12 +60,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3"> {% if page_obj.has_previous %} <a href="/blog/{{ page_obj.previous_page_number }}/">Previous Page</a> {% endif %} </div>
-        <div class="col-md-3">{% if user.is_staff %}<a href="/blog/blog_admin/">PDX Code Guild Blog Admin</a>{% endif %}</div>
-          <div class="col-md-3" style="text-align: right"> {% if page_obj.has_next %} <a href="/blog/{{ page_obj.next_page_number }}/">Next Page</a> {% endif %} </div>
-        <div class="col-md-3"> </div>
+        <div class="3u"> {% if page_obj.has_previous %} <a href="/blog/{{ page_obj.previous_page_number }}/">Previous Page</a> {% endif %} </div>
+        <div class="3u">{% if user.is_staff %}<a href="/blog/blog_admin/">PDX Code Guild Blog Admin</a>{% endif %}</div>
+          <div class="3u" style="text-align: right"> {% if page_obj.has_next %} <a href="/blog/{{ page_obj.next_page_number }}/">Next Page</a> {% endif %} </div>
+        <div class="3u"> </div>
       </div>
     </div>
+      </div>
+  
   </div>
-</div>
+</section>
 {% endblock %} 

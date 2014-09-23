@@ -1,13 +1,12 @@
 {% extends "base.html" %}
-
-    {% load custom_markdown %}
-    {% load threadedcomments_tags %}
-
-    {% block content %}
-        <div class="container">
-        <div class="post">
-        <h1>{{ object.title }}</h1>
-        <h3>{{ object.pub_date }}</h3>
+{% load custom_markdown %}
+{% load threadedcomments_tags %}
+{% block content %}
+<section class="wrapper style1">
+  <div class="container">
+    <div id="content">
+        <h2>{{ object.title }}</h2>
+        <h1>{{ object.pub_date }}</h1>
         {{ object.text|custom_markdown }}
         {% if post.category %}
         Category:<a href="/blog{{ post.category.get_absolute_url }}">{{ post.category.name }}</a>
@@ -31,7 +30,7 @@
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));">
                 </div>
             <h2>Comments for {{ object.title }}:</h2>
-        <div style="max-width: 300px">
+        <div style="max-width: 400px">
 
 
     {% render_comment_list for post %}
@@ -39,6 +38,7 @@
     {% render_comment_form for post %}
             {% endif %}
         </div>
-        </div>
-        </div>
+    </div>
+  </div>
+</section>
 {% endblock %}

@@ -2,15 +2,19 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="hero-unit">
-    <h1 style="text-align: center">Add a Tag</h1>
+<section class="wrapper style1">
+  <div class="container">
+    <div id="content">
+    
+    <h2 style="text-align: center">Add a Tag</h2>
     <br/>
     <div class="container">
 {{ form.media }}
 {% crispy form %}
 
     </div>
-</div>
+  </div>
+</section>
 
 <script type="text/javascript">
 	$(document).ready( function() {

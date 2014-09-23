@@ -2,14 +2,12 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% load i18n sekizai_tags %}
-
 {% block body_block %}
-
-<div id="apply_page_banner" class="jumbotron">
-<div class="container">
-<div id="front_page_notice" class="roundbox applybox" style="margin-top: -100px;">
+<section class="wrapper style1">
+  <div class="container">
+    <div id="content">
   
-<h1 class="page-header">{% trans "Interested?" %}</h1>
+<h2 style="text-align:center">{% trans "Apply to PDX Code Guild" %}</h2>
 <p>Thank you for your interest in PDX Code Guild! </p>
 <p>The steps in the application process are:</p>
 <ol>
@@ -22,7 +20,6 @@
 <br />
 {% crispy form %}
   </div>
-
 </div>
 </div>
   

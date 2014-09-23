@@ -1,8 +1,8 @@
 from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Fieldset, Layout, HTML
+from crispy_forms.helper import FormHelper, Layout
+from crispy_forms.layout import Submit
 from crispy_forms.bootstrap import InlineRadios
-from froala_editor.widgets import FroalaEditor
+
 
 class PostForm(forms.Form):
     full_name = forms.CharField(max_length=256)
@@ -63,111 +63,23 @@ class Comment(forms.Form):
         super(Comment, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_class = 'form-horizontal'
-        self.helper.label_class = 'col-lg-3 smalltext'
+        self.helper.label_class = 'col-lg-3'
         self.helper.field_class = 'col-lg-7'
-        self.helper.layout = Layout(
-            Fieldset('',
-                "name",
-                'email_address',
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                HTML("""
-                    <p style="text-align: center;">Please rate the following on a scale of 1 to 4.</p>
-                    <p style="text-align: center;">1 = Poor, 2 = Fair, 3 = Good, 4 = Excellent</p>
-                    """),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                InlineRadios('first'),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                InlineRadios('second'),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                InlineRadios('third'),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                InlineRadios('fourth'),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                InlineRadios('fifth'),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                InlineRadios('sixth'),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                InlineRadios('seventh'),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                InlineRadios('eighth'),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                InlineRadios('ninth'),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div>
-                    """),
-                InlineRadios('tenth'),
-                HTML("""
-                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left,
-                #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:
-                 -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff,
-                 #fff);"></div><br>
-                    """),
-                'message1',
-                'message2',))
+        self.helper.layout = Layout("Name", 'email_address', InlineRadios('first'), InlineRadios('second'),
+                                    InlineRadios('third'), InlineRadios('fourth'), InlineRadios('fifth'),
+                                    InlineRadios('sixth'), InlineRadios('seventh'), InlineRadios('eighth'),
+                                    InlineRadios('ninth'), InlineRadios('tenth'), 'message1', 'message1')
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Submit'))
 
     name = forms.CharField(
-        label="Name (optional):",
+        label="Name:",
         max_length=80,
         required=False,
     )
 
     email_address = forms.EmailField(
-        label="Email (optional):",
+        label="Email:",
         max_length=80,
         required=False,
     )
@@ -179,8 +91,7 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Depth of the Knowledge of the subject:",
-        required=False,
+        label = "Depth of the Knowledge of the subject",
         widget = forms.RadioSelect,
     )
 
@@ -191,8 +102,7 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Presentation Skills:",
-        required=False,
+        label = "Presentation Skills",
         widget = forms.RadioSelect,
     )
 
@@ -203,8 +113,7 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Sincerity, Commitment, Regularity and Punctuality:",
-        required=False,
+        label = "Sincerity, Commitment, Regularity and Punctuality",
         widget = forms.RadioSelect,
     )
 
@@ -215,8 +124,7 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Syllabus Coverage:",
-        required=False,
+        label = "Syllabus Coverage",
         widget = forms.RadioSelect,
     )
 
@@ -227,8 +135,7 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to Clarify doubts, teaching with relevant examples:",
-        required=False,
+        label = "Ability to Clarify doubts, teaching with relevant examples",
         widget = forms.RadioSelect,
     )
 
@@ -239,8 +146,7 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to relate the course to real life situations:",
-        required=False,
+        label = "Ability to relate the course to real life situations",
         widget = forms.RadioSelect,
     )
 
@@ -251,8 +157,7 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to generate interest:",
-        required=False,
+        label = "Ability to generate interest",
         widget = forms.RadioSelect,
     )
 
@@ -263,8 +168,7 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Content and length of lectures:",
-        required=False,
+        label = "Accessibility of teachers for doubts and clarifications outside the class",
         widget = forms.RadioSelect,
     )
 
@@ -275,8 +179,7 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to command and control the class:",
-        required=False,
+        label = "Ability to command and control the class",
         widget = forms.RadioSelect,
     )
 
@@ -287,8 +190,7 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Overall teacher rating:",
-        required=False,
+        label = "Overall teacher rating",
         widget = forms.RadioSelect,
     )
 

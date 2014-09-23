@@ -1,50 +1,109 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block body_block %}
-<div id="front_page_banner" class="jumbotron">
+
+ <script>
+function myFunction() {
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    x = document.getElementById("demo");
+    x.innerHTML = "Width: " + w + " Heigth: " + h;
+}
+</script>
+<section id="banner">
+  <header>
+    <h2> { PDX Code Guild } <br>
+      Learn to code. Become a developer. Join the Guild. </h2>
+  </header>
+</section>
+
+
+<section class="wrapper style1">
   <div class="container">
-    <h1>{ PDX Code Guild }</h1>
-    <p>Learn to code. Become a developer. Join the Guild.</p>
+    <div class="row double">
+      <section class="4u">
+        <div class="box highlight">
+          <h4>12-Week Junior Developer Bootcamp</h4>
+            <em><strong style="color: #f57b20">Starts august 25th</strong></em>
+          <p>Apply now to our 12-week, full-time Junior Developer Bootcamp. It combines individual projects and group study to give you the skills and habits you need to succeed in the growing tech industry. </p>
+          
+          <p>This hands-on programing course covers Python, SQL, and the basics of JavaScript, HTML and CSS.</p>
+          <a href="/jrdevbootcamp/" class="button">More Info</a>
+        </div>
+      </section>
+      <section class="4u">
+        <div class="box highlight">
+          <h3>What is PDX Code Guild?</h3>
+          <img src="{{ STATIC_URL }}img/classroom5201.png" class="img-team2 img-thumbnail">
+          <p><strong style="color: #f57b20">PDX Code Guild</strong> is an immersive training program that gives students the skills and tools to become a developer. Students build their portfolio and receive individualized attention because of our small class sizes.</p>
+          <p> PDX Code Guild is creating a network of developers and shaping the future of Oregon’s technology ecosystem.</p>
+        </div>
+      </section>
+      <section class="4u">
+        <div class="box highlight">
+          <h3>What does PDX Code Guild offer?</h3>
+<ul>
+            <li>• Python-based Junior Developer Training</li>
+            <li>• Get Technical. A Workshop for Non-technical Startup Founders</li>
+            <li>• Assisted Freelancing</li>
+          </ul>
+          If you're considering <span style="color: #f57b20">upgrading your skills</span>, we would love to hear from you. To start the conversation contact us, or take the direct route and apply today.
+          </p>
+          <a href="/apply/" class="button">I Am Interested</a>
+        </div>
+      </section>
+          </div>
   </div>
-</div>
-<div id="front_page_splash" class="container">
-  <div id="front_page_notice" class="jumbotron col-md-6">12-Week Junior Developer Bootcamp<br>
-    <i>Starts August 26th!</i>
-    <p> Enroll now in this immersive, hands-on computer programming course; learn Python, SQL, and basics of JavaScript, HTML and CSS.  Practice professional developer habits. Build a portfolio, connect with employers, get a better job!<br>
-      <a href="/jrdevbootcamp/" class="btn btn-primary btn-lg">More Info</a> </p>
+</section>
+
+<section class="wrapper style2">
+  <div class="container">
+    <header class="major">
+      <h2>Partners</h2>
+      <p>Partner with PDX Code guild, build relationships with junior developers and help shape the future of the Oregon tech ecosystem.</p>
+    </header>
   </div>
-  <div class="jumbotron col-md-6" style="background-image: url({% static 'img/classroom5201.jpg' %})"> </div>
-</div>
-<br />
-<div id="front_page_body" class="container">
-  <div>
-    <div class="col-md-12">
-      <h2>What is PDX Code Guild?</h2>
-      <p>PDX Code Guild is an immersive training program that gives students the skills and tools to become a developer. Students build their portfolio and receive  individualized attention because of our small class sizes. PDX Code Guild is creating  a network of developers and shaping the future of Oregon’s technology ecosystem.<br>
-        <br>
-        PDX Code Guild offers:</p>
-      <ul>
-        <li>Python-based Junior Developer Training</li>
-        <li>Get Technical! A Workshop for Non-technical Startup Founders</li>
-        <li>Assisted Freelancing</li>
-      </ul>
-      <p>If you're considering upgrading your skills, we would love to hear from you! To start the conversation <a href="contact/">contact us</a>, or take the direct route and apply today!</p>
-      <p class="text-center"> <a class="btn btn-primary btn-lg" href="/apply/" >Interested!</a> </p>
+</section>
+
+
+<section class="wrapper style1">
+  <div class="container">
+    <div class="row">
+      <section class="6u">
+        <div class="box post"> <a href="http://www.donglekong.com/" class="image left"><img src="{{ STATIC_URL }}images/dk.png" alt="" /></a>
+          <div class="inner">
+            <h3>DongleKong</h3>
+            <p>DongleKong adapter kits give you everything you need to connect your MacBook or UltraBook to any projector you may encounter.</p>
+          </div>
+        </div>
+      </section>
+      <section class="6u">
+        <div class="box post"> <a href="https://www.startupdigest.com/" class="image left"><img src="{{ STATIC_URL }}images/sdp.png" alt="" /></a>
+          <div class="inner">
+            <h3>StartupDigest</h3>
+            <p>The personalized insider newsletter for all things startup in your area.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="row">
+      <section class="6u">
+        <div class="box post"> <a href="http://teamtreehouse.com/" class="image left"><img src="{{ STATIC_URL }}images/th.png" alt="" /></a>
+          <div class="inner">
+            <h3>Treehouse</h3>
+            <p>Learn HTML, CSS, iPhone apps & more</p>
+          </div>
+        </div>
+      </section>
+      <section class="6u">
+        <div class="box post"> <a href="http://portland.startupweekend.org/" class="image left"><img src="{{ STATIC_URL }}images/sw.png" alt="" /></a>
+          <div class="inner">
+            <h3>Startup Weekend Portland</h3>
+            <p>Where Portland comes to build skills, meet incredible people, and launch successful startups.</p>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
-</div>
-<br />
-<div class="container">
-  <div id="front_page_partner_well" class="col-md-12 well">
-    <h2>Partners</h2>
-    <p class="text-center">Are you a local area tech business? Do you need developers?
-      Do you want to help make this happen?
-      What are you waiting for, <a href="contact/">talk to us</a>!</p>
-    <br/>
-    <div>
-      <p class="text-center"> <a href="http://www.donglekong.com/"target="_blank"> <img style="display: inline; margin: 5px 5px;" class="img-responsive partner-logo" alt="DongleKong Logo" src="{% static 'img/dk.png' %}"/> </a> <a href="https://www.startupdigest.com/digests/portland" target="_blank"> <img style="display: inline; margin: 5px 5px;" class="img-responsive partner-logo" alt="Startup Digest PDX Logo" src="{% static 'img/sdp.png' %}"/> </a> <a href="http://teamtreehouse.com/"target="_blank"> <img style="display: inline; margin: 5px 5px;" class="img-responsive partner-logo" alt="Treehouse Logo" src="{% static 'img/th.png' %}"/> </a> <a href="http://portland.startupweekend.org/"target="_blank"> <img style="display: inline; margin: 5px 5px;" class="img-responsive partner-logo" alt="Startup Weekend Logo" src="{% static 'img/sw.png' %}"/> </a> </p>
-      <p class="text-center"> <a class="btn btn-primary btn-lg" href="partner/"> Partner With Us </a> </p>
-    </div>
-  </div>
-</div>
+</section>
 {% endblock %} 
