@@ -10,6 +10,25 @@ sitemaps = {
     'static': StaticViewSitemap,
 }
 
+
+blog_urls = [
+    url(r'^', include('zinnia.urls.capabilities')),
+    url(r'^search/', include('zinnia.urls.search')),
+    url(r'^sitemap/', include('zinnia.urls.sitemap')),
+    url(r'^trackback/', include('zinnia.urls.trackback')),
+    url(r'^blog/tags/', include('zinnia.urls.tags')),
+    url(r'^blog/feeds/', include('zinnia.urls.feeds')),
+    url(r'^blog/random/', include('zinnia.urls.random')),
+    url(r'^blog/authors/', include('zinnia.urls.authors')),
+    url(r'^blog/categories/', include('zinnia.urls.categories')),
+    url(r'^blog/comments/', include('zinnia.urls.comments')),
+    url(r'^blog/', include('zinnia.urls.entries')),
+    url(r'^blog/', include('zinnia.urls.archives')),
+    url(r'^blog/', include('zinnia.urls.shortlink')),
+    url(r'^blog/', include('zinnia.urls.quick_entry'))
+]
+
+
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout',
@@ -32,11 +51,10 @@ urlpatterns = patterns('',
     url(r'^advisors/$', 'pdxcodeguild.views.advisors', name='advisors'),
     url(r'^value/$', 'pdxcodeguild.views.value', name='value'),
     url(r'^ppm/$', 'pdxcodeguild.views.ppm', name='ppm'),
-    (r'^forum/', include('pybb.urls', namespace='pybb')),
-    url(r'^blog/', include('pdx_blog.urls', namespace='blog')),
-    url(r'^blog/comments/', include('fluent_comments.urls')),
-    url(r'^articles/comments/', include('django.contrib.comments.urls')),
+    url(r'^forum/', include('pybb.urls', namespace='pybb')),
     url(r'^markitup/', include('markitup.urls')),
+    url(r'^', include(blog_urls, namespace='zinnia')),
+    (r'^comments/', include('django_comments.urls')),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 )
 
