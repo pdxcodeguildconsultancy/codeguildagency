@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load i18n sekizai_tags %}
+{% block body_block %}
+    <section class="wrapper style1">
+        <div class="container">
+            <div id="content">
+
+                <h2 style="text-align:center">{% trans "Welcome to PDX Code Guild!" %}</h2>
+
+                <p>Please fill this form out before the end of class today.</p>
+
+                <p>If you do not already have one please go to <a href="https://github.com/" target="_blank">GitHub</a>
+                    and open an account.</p>
+
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left, #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:     -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff, #fff);"></div>
+                <br/>
+                {% crispy form %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

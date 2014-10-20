@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'tagging',
     'mptt',
+    'zinnia_bootstrap',
     'zinnia',
 )
 
@@ -82,6 +83,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_LOADERS = (
+    'app_namespace.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )

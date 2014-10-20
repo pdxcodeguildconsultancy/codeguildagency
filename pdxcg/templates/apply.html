@@ -3,26 +3,33 @@
 {% load crispy_forms_tags %}
 {% load i18n sekizai_tags %}
 {% block body_block %}
-<section class="wrapper style1">
-  <div class="container">
-    <div id="content">
-  
-<h2 style="text-align:center">{% trans "Apply to PDX Code Guild" %}</h2>
-<p>Thank you for your interest in PDX Code Guild! </p>
-<p>The steps in the application process are:</p>
-<ol>
-  <li> Let us know you're interested by filling out the form below or <a href="/contact/">contacting us directly</a>.</li>
-  <li> Schedule an informal interview and tour of the classroom</li>
-  <li> Request and fill out application.</li>
-</ol>
-<p>PDX Code Guild is committed to providing equal opportunity in its recruitment, admission, educational programs, and employment without discrimination on the basis of race, creed, color, national origin, sex, sexual orientation, source of income, or physical ability.</p>
-<div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left, #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:     -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff, #fff);"></div>
-<br />
-{% crispy form %}
-  </div>
-</div>
-</div>
-  
- {% endblock %}
+    <section class="wrapper style1">
+        <div class="container">
+            <div id="content">
+
+                <h2 style="text-align:center">{% trans "Apply to PDX Code Guild" %}</h2>
+
+                <p>Thank you for your interest in PDX Code Guild! </p>
+
+                <p>The steps in the application process are:</p>
+                <ol>
+                    <li> Let us know you're interested by filling out the form below or <a href="/contact/">contacting
+                        us directly</a>.
+                    </li>
+                    <li> Schedule an informal interview and tour of the classroom</li>
+                    <li> Request and fill out application.</li>
+                </ol>
+                <p>PDX Code Guild is committed to providing equal opportunity in its recruitment, admission, educational
+                    programs, and employment without discrimination on the basis of race, creed, color, national origin,
+                    sex, sexual orientation, source of income, or physical ability.</p>
+
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left, #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:     -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff, #fff);"></div>
+                <br/>
+                {% crispy form %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
 
 

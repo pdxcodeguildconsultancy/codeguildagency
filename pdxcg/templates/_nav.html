@@ -2,8 +2,7 @@
 {% load url from future %}
 {% load staticfiles %}
 <nav id="nav">
-    <img src="{{ STATIC_URL }}images/guild_logo_blue.png" style="display:inline-block;margin-right:30px;margin-top: 10px">
-  <ul style="display:inline-block;">
+  <ul>
     <li class="{% active '^/$' %}"><a href="/" >Home</a></li>
     <li class="dropdown nav-dw {% active '^/gettechnical/' %} {% active '^/jrdevbootcamp/' %} {% active '^/evening_bootcamp/' %}"> <a class="dropdown-toggle" data-toggle="dropdown">Programs<b class="caret"></b></a>
       <ul class="dropdown-menu">
@@ -14,11 +13,13 @@
     <li class="{% active 'apply' %}"><a href="/apply/">Apply</a></li>
     <li class="{% active 'team' %}"><a href="/team/">Team</a></li>
     <li class="{% active 'advisors' %}"><a href="/advisors/">Advisors</a></li>
-    <li class="{% active 'ppm' %}"><a href="/ppm/">Python Peer Mentoring</a></li>
-    <!--<li class="{% active 'blog' %}"><a href="/blog/">Blog</a></li> -->
-    <!-- <li class="{% active 'forum' %}"><a href="/forum/">Forum</a></li> -->
+    <li class="{% active 'ppm' %}"><a href="/ppm/">Events</a></li>
+    <li class="{% active 'blog' %}"><a href="/blog/">Blog</a></li>
     <li class="{% active 'contact' %}"><a href="/contact/">Contact</a></li>
 
+
+  </ul>
+</nav>
 {% comment %}
 <!--
     {% if user.is_authenticated %}
@@ -39,5 +40,3 @@
     {% endif %}
 -->
 {%  endcomment %}
-  </ul>
-</nav>

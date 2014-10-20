@@ -5,23 +5,27 @@
 
 {% block body_block %}
 
-<div id="apply_page_banner" class="jumbotron">
-<div class="container">
-<div id="front_page_notice" class="roundbox applybox" style="margin-top: -100px;">
-  
-<h1 class="page-header">{% trans "Please let us know how we are doing." %}</h1>
-<p>We count on your feedback to improve our school. This form is 100% anonymous if you choose to leave out your name and email.
-We request you fill out the full form but you are not required to.</p>
-    <p>It is very important to give us some insight constructive feedback on any area you give us a 2 or lower. Please use the bottom of this form to explain any ideas you have to improve any low score.</p>
+    <section class="wrapper style1">
+        <div class="container">
+            <div id="content">
 
-<br>
-{{ form.media }}
-{% crispy form %}
-  </div>
+                <h1 class="page-header">{% trans "Please let us know how we are doing." %}</h1>
 
-</div>
-</div>
+                <p>We count on your feedback to improve our school. This form is 100% anonymous if you choose to leave
+                    out your name and email.
+                    We request you fill out the full form but you are not required to.</p>
 
- {% endblock %}
+                <p>It is very important to give us some insight constructive feedback on any area you give us a 2 or
+                    lower. Please use the bottom of this form to explain any ideas you have to improve any low
+                    score.</p>
+
+                <br>
+                {{ form.media }}
+                {% crispy form %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
 
 
