@@ -46,9 +46,9 @@ class Contact(forms.Form):
             ('Email', "Email"),
             ('Either', "Either"),
         ),
-        label = "How do you prefer to be contacted?",
-        widget = forms.RadioSelect,
-        initial = 'Either',
+        label="How do you prefer to be contacted?",
+        widget=forms.RadioSelect,
+        initial='Either',
     )
 
     message = forms.CharField(
@@ -65,10 +65,10 @@ class Comment(forms.Form):
         self.helper.form_class = 'form-horizontal'
         self.helper.label_class = 'col-lg-3'
         self.helper.field_class = 'col-lg-7'
-        self.helper.layout = Layout("Name", 'email_address', InlineRadios('first'), InlineRadios('second'),
+        self.helper.layout = Layout("name", 'email_address', InlineRadios('first'), InlineRadios('second'),
                                     InlineRadios('third'), InlineRadios('fourth'), InlineRadios('fifth'),
                                     InlineRadios('sixth'), InlineRadios('seventh'), InlineRadios('eighth'),
-                                    InlineRadios('ninth'), InlineRadios('tenth'), 'message1', 'message1')
+                                    InlineRadios('ninth'), InlineRadios('tenth'), 'message1', 'message2')
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Submit'))
 
@@ -91,8 +91,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Depth of the Knowledge of the subject",
-        widget = forms.RadioSelect,
+        label="Depth of the Knowledge of the subject",
+        widget=forms.RadioSelect,
     )
 
     second = forms.ChoiceField(
@@ -102,8 +102,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Presentation Skills",
-        widget = forms.RadioSelect,
+        label="Presentation Skills",
+        widget=forms.RadioSelect,
     )
 
     third = forms.ChoiceField(
@@ -113,8 +113,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Sincerity, Commitment, Regularity and Punctuality",
-        widget = forms.RadioSelect,
+        label="Sincerity, Commitment, Regularity and Punctuality",
+        widget=forms.RadioSelect,
     )
 
     fourth = forms.ChoiceField(
@@ -124,8 +124,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Syllabus Coverage",
-        widget = forms.RadioSelect,
+        label="Syllabus Coverage",
+        widget=forms.RadioSelect,
     )
 
     fifth = forms.ChoiceField(
@@ -135,8 +135,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to Clarify doubts, teaching with relevant examples",
-        widget = forms.RadioSelect,
+        label="Ability to Clarify doubts, teaching with relevant examples",
+        widget=forms.RadioSelect,
     )
 
     sixth = forms.ChoiceField(
@@ -146,8 +146,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to relate the course to real life situations",
-        widget = forms.RadioSelect,
+        label="Ability to relate the course to real life situations",
+        widget=forms.RadioSelect,
     )
 
     seventh = forms.ChoiceField(
@@ -157,8 +157,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to generate interest",
-        widget = forms.RadioSelect,
+        label="Ability to generate interest",
+        widget=forms.RadioSelect,
     )
 
     eighth = forms.ChoiceField(
@@ -168,8 +168,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Accessibility of teachers for doubts and clarifications outside the class",
-        widget = forms.RadioSelect,
+        label="Accessibility of teachers for doubts and clarifications outside the class",
+        widget=forms.RadioSelect,
     )
 
     ninth = forms.ChoiceField(
@@ -179,8 +179,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Ability to command and control the class",
-        widget = forms.RadioSelect,
+        label="Ability to command and control the class",
+        widget=forms.RadioSelect,
     )
 
     tenth = forms.ChoiceField(
@@ -190,8 +190,8 @@ class Comment(forms.Form):
             ('3', "3"),
             ('4', "4"),
         ),
-        label = "Overall teacher rating",
-        widget = forms.RadioSelect,
+        label="Overall teacher rating",
+        widget=forms.RadioSelect,
     )
 
     message1 = forms.CharField(
@@ -206,3 +206,44 @@ class Comment(forms.Form):
         widget=forms.Textarea
     )
 
+
+class StudentIntake(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(StudentIntake, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-3'
+        self.helper.field_class = 'col-lg-7'
+        self.helper.layout = Layout('name', 'email_address', 'git_hub', 'student_bio', 'student_goals')
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+    name = forms.CharField(
+        label="Name:",
+        max_length=80,
+        required=True,
+    )
+
+    email_address = forms.EmailField(
+        label="Email:",
+        max_length=80,
+        required=True,
+    )
+
+    git_hub = forms.CharField(
+        label='GitHub URL:',
+        max_length=200,
+        required=True,
+    )
+
+    student_bio = forms.CharField(
+        label='Tell us a little about yourself.',
+        required=False,
+        widget=forms.Textarea,
+    )
+
+    student_goals = forms.CharField(
+        label= 'Tell us about your goals for this class.',
+        required=False,
+        widget=forms.Textarea,
+    )

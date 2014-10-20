@@ -13,13 +13,13 @@
         <p>Thank you for registering. You will now be redirected to the home page where you can log in.</p>
 		<p>Have a wonderful day!</p>
         <meta http-equiv="REFRESH" content="3;url=/">
-        
+
         {% else %}
         <form class="form-signin span8" id="user_form" method="post" action="/register/"
               enctype="multipart/form-data">
             {% csrf_token %}
             <h2 class="form-signin-heading">Sign up Here</h2>
-      
+
             {% for field in user_form.visible_fields %}
             {{ field.errors }}
             {{ field.help_text }}<br />

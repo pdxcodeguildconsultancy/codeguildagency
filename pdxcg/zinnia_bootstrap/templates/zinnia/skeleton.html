@@ -1,0 +1,137 @@
+{% load i18n staticfiles navtags compress %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="keywords" content="{% block meta-keywords %}django, blog, weblog, zinnia{% endblock meta-keywords %}"/>
+    <meta name="author" content="Fantomas42"/>
+    {% block meta %}{% endblock meta %}
+    <link rel="pingback" href="/xmlrpc/"/>
+    <link rel="home" href="{% url 'zinnia:entry_archive_index' %}"/>
+    <link rel="stylesheet" href="{% static "zinnia_bootstrap/bootstrap/css/bootstrap.min.css" %}"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/skel.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style-wide.css"/>
+
+    {% compress js %}
+    <!--[if lte IE 8]>
+    <script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}fluent_comments/js/ajaxcomments.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}pybb/js/jquery.formset.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}pybb/js/pybbjs.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.stringToSlug.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.dropotron.min.js"></script>
+    <script src="{{ STATIC_URL }}js/skel.min.js"></script>
+    <script src="{{ STATIC_URL }}js/skel-layers.min.js"></script>
+    <script src="{{ STATIC_URL }}js/init.js"></script>
+    {% endcompress %}
+
+    <!--[if lt IE 9]>
+        <script src="{% static "zinnia_bootstrap/assets/js/html5shiv.js" %}"></script>
+        <script src="{% static "zinnia_bootstrap/assets/js/respond.min.js" %}"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="{% static "favicon.ico" %}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="{% static "zinnia_bootstrap/assets/ico/apple-touch-icon-144-precomposed.png" %}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="{% static "zinnia_bootstrap/assets/ico/apple-touch-icon-114-precomposed.png" %}"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+          href="{% static "zinnia_bootstrap/assets/ico/apple-touch-icon-72-precomposed.png" %}"/>
+    <link rel="apple-touch-icon-precomposed"
+          href="{% static "zinnia_bootstrap/assets/ico/apple-touch-icon-57-precomposed.png" %}"/>
+    {% block link %}{% endblock link %}
+    {% block script %}{% endblock script %}
+</head>
+
+<body class="zinnia {% block body-class %}{% endblock body-class %}">
+
+<div id="header">
+    {% include "_nav.html" %}
+</div>
+
+
+{% block slider %}{% endblock %}
+<div class="container">
+    <div class="row">
+        <div id="content" class="hfeed col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            {% block breadcrumbs %}{% endblock %}
+            {% block content %}
+                <div class="links">
+                    <h3>{% trans "Useful links" %}</h3>
+                    <ul>
+                        <li>
+                            <a href="{% url 'zinnia:entry_archive_index' %}" title="{% trans "Weblog index" %}">
+                                {% trans "Weblog index" %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'zinnia:sitemap' %}" title="{% trans "Sitemap" %}">
+                                {% trans "Sitemap" %}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <h3>{% trans "Search" %}</h3>
+                    {% include "zinnia/tags/search_form.html" %}
+                </div>
+            {% endblock content %}
+        </div>
+        <div id="sidebar" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            {% block sidebar %}
+            {% endblock sidebar %}
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="container">
+        <div class="row ">
+            <div class="12u">
+                <div class="row collapse-at-2">
+                    <section class="6u" style="text-align: center">
+                        <ul class="links">
+                            <li><a href="/jrdevbootcamp/">Jr Dev Bootcamp</a></li>
+                            <li><a href="/evening_bootcamp/">Evening Dev Bootcamp</a></li>
+                            <li><a href="/apply/">Apply</a></li>
+                            <li><a href="/team/">Team</a></li>
+                            <li><a href="/ppm/">Python Peer Mentoring</a></li>
+                        </ul>
+                    </section>
+                    <section class="6u" style="text-align: center">
+                        <ul class="links">
+                            <li><a href="/blog/">Blog</a></li>
+                            <!-- <li><a href="/forum/">Forum</a></li> -->
+                            <li><a href="/contact/">Contact</a></li>
+                            <li><a href="/accounts/login/">Log In</a></li>
+                            <li><a href="/accounts/signup/">Sign Up</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <ul class="icons">
+        <li><a href="https://twitter.com/PDXCodeGuild" class="icon fa-twitter"><span class="label">Twitter</span></a>
+        </li>
+        <li><a href="https://www.facebook.com/PDXCodeGuild" class="icon fa-facebook"><span class="label">Facebook</span></a>
+        </li>
+        <li><a href="https://github.com/PdxCodeGuild" class="icon fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/company/pdx-code-guild" class="icon fa-linkedin"><span class="label">LinkedIn</span></a>
+        </li>
+    </ul>
+
+
+    <div class="copyright">
+        <ul class="menu">
+            <li>&copy; PDX Code Guild. All rights reserved</li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="{% static "zinnia_bootstrap/assets/js/jquery.js" %}"></script>
+<script type="text/javascript" src="{% static "zinnia_bootstrap/bootstrap/js/bootstrap.min.js" %}"></script>
+</body>
+</html>

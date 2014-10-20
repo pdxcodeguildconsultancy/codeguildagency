@@ -1,4 +1,4 @@
-{% load sekizai_tags i18n custom_markdown %}
+{% load sekizai_tags i18n navtags %}
 {% load url from future %}
 {% load staticfiles %}
 <nav id="nav">
@@ -13,10 +13,15 @@
     <li class="{% active 'apply' %}"><a href="/apply/">Apply</a></li>
     <li class="{% active 'team' %}"><a href="/team/">Team</a></li>
     <li class="{% active 'advisors' %}"><a href="/advisors/">Advisors</a></li>
-    <li class="{% active 'ppm' %}"><a href="/ppm/">Python Peer Mentoring</a></li>
+    <li class="{% active 'ppm' %}"><a href="/ppm/">Events</a></li>
     <li class="{% active 'blog' %}"><a href="/blog/">Blog</a></li>
-    <!-- <li class="{% active 'forum' %}"><a href="/forum/">Forum</a></li> -->
     <li class="{% active 'contact' %}"><a href="/contact/">Contact</a></li>
+
+
+  </ul>
+</nav>
+{% comment %}
+<!--
     {% if user.is_authenticated %}
     <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, {{ user }} <b class="caret"></b> </a>
       <ul class="dropdown-menu">
@@ -33,5 +38,5 @@
     <li> <a href="/accounts/login/">{% trans "Log in" %}</a> </li>
     <li> <a href="/accounts/signup/">{% trans "Sign up" %}</a> </li>
     {% endif %}
-  </ul>
-</nav>
+-->
+{%  endcomment %}

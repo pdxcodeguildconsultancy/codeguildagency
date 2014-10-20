@@ -34,9 +34,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'fluent_comments',
-    'threadedcomments',
-    'django.contrib.comments',
+    #'django.contrib.comments',
+    'django_comments',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -44,12 +43,15 @@ INSTALLED_APPS = (
     'crispy_forms',
     'south',
     'sekizai',
-    'pdx_blog',
     'markdown',
     'markitup',
     'pybb',
     'compressor',
     'django.contrib.sitemaps',
+    'tagging',
+    'mptt',
+    'zinnia_bootstrap',
+    'zinnia',
 )
 
 COMPRESS_ENABLED = True
@@ -69,7 +71,6 @@ MARKITUP_SKIN = 'markitup/skins/markitup'
 
 JQUERY_URL = None
 
-COMMENTS_APP = 'fluent_comments'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -82,6 +83,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_LOADERS = (
+    'app_namespace.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
@@ -98,6 +100,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "allauth.account.context_processors.account",
     "allauth.socialaccount.context_processors.socialaccount",
     'pybb.context_processors.processor',
+    'zinnia.context_processors.version',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -129,7 +132,6 @@ USE_L10N = True
 
 USE_TZ = True
 SITE_ID = 1
-FLUENT_COMMENTS_EXCLUDE_FIELDS = ('name', 'email', 'title', 'url')
 
 LOGIN_REDIRECT_URL = 'mainpage'
 

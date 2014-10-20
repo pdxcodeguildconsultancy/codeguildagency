@@ -21,7 +21,7 @@ DATABASES = {
 STATIC_ROOT = '../staticfiles/'
 
 STATICFILES_DIRS = (
-    STATIC_DIRS,
+    'C:/websites/pdxcodeguild/static/',
 )
 STATIC_URL = '/static/'
 
