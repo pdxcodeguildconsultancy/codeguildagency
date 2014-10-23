@@ -246,3 +246,10 @@ def student_comment(request):
     context_dict = {'form': form}
 
     return render_to_response('comment.html', context_dict, context)
+
+
+def student(request):
+    context = RequestContext(request)
+    context_dict = {}
+
+    return render_to_response('student.html', context_dict, context)
