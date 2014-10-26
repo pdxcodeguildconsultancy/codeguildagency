@@ -2,24 +2,25 @@
 {% load url from future %}
 {% load staticfiles %}
 <nav id="nav">
-  <ul>
-    <li class="{% active '^/$' %}"><a href="/" >Home</a></li>
-    <li class="dropdown nav-dw {% active '^/gettechnical/' %} {% active '^/jrdevbootcamp/' %} {% active '^/evening_bootcamp/' %}"> <a class="dropdown-toggle" data-toggle="dropdown">Programs<b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><a href="/jrdevbootcamp/">Jr Dev Bootcamp</a></li>
-        <li><a href="/evening_bootcamp/">Evening Dev Bootcamp</a></li>
-      </ul>
-    </li>
-    <li class="{% active 'apply' %}"><a href="/apply/">Apply</a></li>
-    <li class="{% active 'team' %}"><a href="/team/">Team</a></li>
-    <li class="{% active 'advisors' %}"><a href="/advisors/">Advisors</a></li>
-    <li class="{% active 'students' %}"><a href="/students/">Students</a></li>
-    <li class="{% active 'ppm' %}"><a href="/ppm/">Events</a></li>
-    <li class="{% active 'blog' %}"><a href="/blog/">Blog</a></li>
-    <li class="{% active 'contact' %}"><a href="/contact/">Contact</a></li>
+    <ul>
+        <li class="{% active '^/$' %}"><a href="/">Home</a></li>
+        <li class="dropdown nav-dw {% active '^/gettechnical/' %} {% active '^/devbootcamp/' %} {% active '^/evening_bootcamp/' %}">
+            <a class="dropdown-toggle" data-toggle="dropdown">Programs<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'devbootcamp' %}">Developer Bootcamp</a></li>
+                <li><a href="{% url 'evening_bootcamp' %}">Evening Dev Bootcamp</a></li>
+            </ul>
+        </li>
+        <li class="{% active 'apply' %}"><a href="{% url 'apply' %}">Apply</a></li>
+        <li class="{% active 'team' %}"><a href="{% url 'team' %}">Team</a></li>
+        <li class="{% active 'advisors' %}"><a href="{% url 'advisors' %}">Advisors</a></li>
+        <li class="{% active 'students' %}"><a href="{% url 'students' %}">Students</a></li>
+        <li class="{% active 'ppm' %}"><a href="{% url 'ppm' %}">Events</a></li>
+        <li class="{% active 'blog' %}"><a href="/blog/">Blog</a></li>
+        <li class="{% active 'contact' %}"><a href="{% url 'contact' %}">Contact</a></li>
 
 
-  </ul>
+    </ul>
 </nav>
 {% comment %}
 <!--

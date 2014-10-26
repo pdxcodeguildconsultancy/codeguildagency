@@ -12,26 +12,26 @@
     </script>
     <section id="banner">
         <header>
-            <img src="{{ STATIC_URL }}images/guild_logo_orange.png"> <br>
+            <img src="{{ STATIC_URL }}images/guild_logo_orange.png" class="img-logo">
         </header>
     </section>
-    <h2 style="text-align: center; font-size: 1em"> Learn to code. Become a developer. Join the Guild.<br>
+    <h2 style="text-align: center; font-size: 1em; background-color: #4ba1ba; color: #ffffff; padding: 20px">
         Licensed by the Oregon Higher Education Coordinating Commission.</h2>
     <section class="wrapper style1">
         <div class="container">
             <div class="row double">
                 <section class="4u">
                     <div class="box highlight">
-                        <h4>Evening Junior Developer Bootcamp</h4>
-                        <em><strong style="color: #f57b20">Starts October 20th</strong></em>
+                        <h4>Developer Bootcamp</h4>
+                        <em><strong style="color: #f57b20">Starts January 5th</strong></em>
 
-                        <p>Apply now to our 16-week, part-time Junior Developer Bootcamp. It combines individual
+                        <p>Apply now to our 12-week, full immersion Developer Bootcamp. It combines individual
                             projects, pair programming and group study to give you the skills and habits you need to
                             succeed in the growing tech industry.</p>
 
                         <p>This hands-on programing course covers Python, SQL, and the basics of JavaScript, HTML and
                             CSS.</p>
-                        <a href="/evening_bootcamp/" class="button">More Info</a>
+                        <a href="{% url 'devbootcamp' %}" class="button">More Info</a>
                     </div>
                 </section>
                 <section class="4u">
@@ -51,7 +51,7 @@
                     <div class="box highlight">
                         <h3>What does PDX Code Guild offer?</h3>
                         <ul>
-                            <li>• Python-based Junior Developer Training</li>
+                            <li>• Python-based Developer Training</li>
                             <li>• Get Technical. A Workshop for Non-technical Startup Founders</li>
                             <li>• Assisted Freelancing</li>
                         </ul>
@@ -59,7 +59,7 @@
                         to hear from you. To start the conversation contact us, or take the direct route and apply
                         today.
                         </p>
-                        <a href="/apply/" class="button">I Am Interested</a>
+                        <a href="{% url 'apply' %}" class="button">I Am Interested</a>
                     </div>
                 </section>
             </div>
@@ -71,7 +71,7 @@
             <header class="major">
                 <h2>Partners</h2>
 
-                <p>Partner with PDX Code guild, build relationships with junior developers and help shape the future of
+                <p>Partner with PDX Code guild, build relationships with developers and help shape the future of
                     the Oregon tech ecosystem.</p>
             </header>
         </div>
