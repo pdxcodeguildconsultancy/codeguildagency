@@ -16,16 +16,16 @@ class NewStudentApplication(models.Model):
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255)
     zip = models.IntegerField(max_length=5)
-    applied_before = models.BooleanField()
+    applied_before = models.CharField(max_length=255)
     if_yes_app = models.DateField(auto_now=False)
-    attended_before = models.BooleanField()
+    attended_before = models.CharField(max_length=255)
     if_yes_grad = models.CharField(max_length=255)
     if_no_grad = models.TextField(max_length=255)
-    phone_number = models.CharField(validators=[phone_regex], blank=True)
-    message_number = models.CharField(validators=[phone_regex], blank=True)
-    cell_number = models.CharField(validators=[phone_regex], blank=True)
+    phone_number = models.CharField(validators=[phone_regex], blank=True, max_length=15)
+    message_number = models.CharField(validators=[phone_regex], blank=True, max_length=15)
+    cell_number = models.CharField(validators=[phone_regex], blank=True, max_length=15)
     email = models.EmailField()
-    us_citizen = models.BooleanField()
+    us_citizen = models.CharField(max_length=255)
 
     # Emergency Contact Information
 
@@ -34,4 +34,4 @@ class NewStudentApplication(models.Model):
     contact_city = models.CharField(max_length=255)
     contact_state = models.CharField(max_length=255)
     contact_zip = models.CharField(max_length=255)
-    contact_number = models.CharField(validators=[phone_regex], blank=True)
+    contact_number = models.CharField(validators=[phone_regex], blank=True, max_length=15)

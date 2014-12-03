@@ -1,9 +1,8 @@
-from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, Context
 from django.shortcuts import render_to_response
 from django.core.mail import send_mail, BadHeaderError
-from pdxcodeguild.forms import Comment, Contact, StudentIntake
+from .forms import Comment, Contact, StudentIntake, NewStudentApp
 
 
 def index(request):
@@ -259,3 +258,20 @@ def student(request):
     context_dict = {}
 
     return render_to_response('student.html', context_dict, context)
+
+
+def student_apply(request):
+    context = RequestContext(request)
+    if request.method == 'GET':
+        form = NewStudentApp()
+    else:
+        # A POST request: Handle Form Upload
+        form = NewStudentApp(request.POST)  # Bind data from request.POST into a PostForm
+
+        # If data is valid, proceeds to create a new post and redirect the user
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/thanks/')
+    context_dict = {'form': form}
+
+    return render_to_response('student_apply.html', context_dict, context)
