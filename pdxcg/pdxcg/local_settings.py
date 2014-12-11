@@ -3,7 +3,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.join(BASE_DIR, os.pardir)
 PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 DATABASE_PATH = os.path.join(PROJECT_PATH, 'backup_pdxdjango.db')
-TEMPLATESS = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
+TEMPLATES = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
 STATIC_DIRS = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'static'))
 
 DEBUG = True
@@ -17,13 +17,14 @@ DATABASES = {
     }
 }
 
-TEMPLATE_DIRS = (TEMPLATESS,)
+TEMPLATE_DIRS = (TEMPLATES,)
 
 STATIC_ROOT = '../staticfiles/'
 
 STATICFILES_DIRS = (
-    'C:/websites/pdxcodeguild/static/',
+    STATIC_DIRS,
 )
+print STATIC_DIRS
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = '../../media/'
