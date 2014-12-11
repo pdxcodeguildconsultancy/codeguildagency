@@ -2,6 +2,118 @@ from django import forms
 from crispy_forms.helper import FormHelper, Layout
 from crispy_forms.layout import Submit
 from crispy_forms.bootstrap import InlineRadios
+from .models import NewStudentApplication
+from django.core.validators import RegexValidator
+
+class NewStudentApp(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(NewStudentApp, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+    phone_regex = RegexValidator(
+        regex=r'^\+?1?\d{9,15}$',
+        message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
+    )
+
+    first_name = forms.CharField(
+        max_length=255,
+        label="Name:",
+        required=True,
+    )
+
+    middle_initial = forms.CharField(
+        max_length=1
+    )
+    last_name = forms.CharField(
+        max_length=255
+    )
+    date_of_birth = forms.DateField(
+        auto_now=False
+    )
+    street_address = forms.CharField(
+        max_length=255
+    )
+    city = forms.CharField(
+        max_length=255
+    )
+    state = forms.CharField(
+        max_length=255
+    )
+
+    zip = forms.IntegerField(
+        max_length=5
+    )
+
+    applied_before = forms.BooleanField()
+
+    if_yes_app = forms.DateField(
+        auto_now=False
+    )
+
+    attended_before = forms.BooleanField()
+
+    if_yes_grad = forms.CharField(
+        max_length=255
+    )
+
+    if_no_grad = forms.Textarea(
+    )
+
+    phone_number = forms.CharField(
+        validators=[phone_regex],
+        blank=True
+    )
+
+    message_number = forms.CharField(
+        validators=[phone_regex],
+        blank=True
+    )
+
+    cell_number = forms.CharField(
+        validators=[phone_regex],
+        blank=True
+    )
+
+    email = forms.EmailField()
+    us_citizen = forms.BooleanField()
+
+    # Emergency Contact Information
+
+    contact_name = forms.CharField(
+        max_length=255
+    )
+
+    contact_address = forms.CharField(
+        max_length=255
+    )
+
+    contact_city = forms.CharField(
+        max_length=255
+    )
+
+    contact_state = forms.CharField(
+        max_length=255
+    )
+
+    contact_zip = forms.CharField(
+        max_length=255
+    )
+
+    contact_number = forms.CharField(
+        validators=[phone_regex],
+        blank=True
+    )
+
+
+
+    class Meta:
+        model = NewStudentApplication
+
+
+
+
+
 
 
 class PostForm(forms.Form):

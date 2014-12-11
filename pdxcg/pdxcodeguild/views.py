@@ -192,6 +192,12 @@ def ppm(request):
     return render_to_response('ppm.html', context_dict, context)
 
 
+def pythonquiz(request):
+    context = RequestContext(request)
+    context_dict = {}
+
+    return render_to_response('pythonquiz.html', context_dict, context)
+
 def student_comment(request):
     context = RequestContext(request)
     if request.method == 'GET':
