@@ -1,15 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block body_block %}
-
-    <script>
-        function myFunction() {
-            var w = window.innerWidth;
-            var h = window.innerHeight;
-            x = document.getElementById("demo");
-            x.innerHTML = "Width: " + w + " Heigth: " + h;
-        }
-    </script>
     <section id="banner">
         <header>
             <img src="{{ STATIC_URL }}images/guild_logo_orange.png" class="img-logo">
@@ -71,7 +62,7 @@
                             <li>• Leverage our team of experienced experts and new local talent</li>
                             <li>• Launch your startup faster</li>
                         </ul>
-                        ><a href="{% url 'contact' %}">Contact Options</a>
+                        <a href="{% url 'contact' %}">Contact Options</a>
                         </p>
                     </div>
                 </section>

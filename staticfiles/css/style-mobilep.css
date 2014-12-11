@@ -80,3 +80,10 @@
 		padding: 2em 20px;
 		text-align: left;
 	}
+
+.img-logo {
+    left: 40%;
+    top: 67%;
+    z-index: 2;
+    width: 23%;
+}
