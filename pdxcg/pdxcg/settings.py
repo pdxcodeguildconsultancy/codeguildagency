@@ -54,7 +54,7 @@ INSTALLED_APPS = (
     'zinnia',
 )
 
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter',
     ]

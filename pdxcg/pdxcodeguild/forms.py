@@ -5,7 +5,7 @@ from crispy_forms.bootstrap import InlineRadios
 from django.core.validators import RegexValidator
 from django.forms.extras.widgets import SelectDateWidget
 
-from .models import NewStudentApplication
+from .models import NewStudentApplication, StudentIntake
 
 
 class NewStudentApp(forms.ModelForm):
@@ -463,9 +463,9 @@ class Comment(forms.Form):
     )
 
 
-class StudentIntake(forms.Form):
+class StudentIntakeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super(StudentIntake, self).__init__(*args, **kwargs)
+        super(StudentIntakeForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_class = 'form-horizontal'
         self.helper.label_class = 'col-lg-3'
@@ -503,3 +503,6 @@ class StudentIntake(forms.Form):
         required=False,
         widget=forms.Textarea,
     )
+
+    class Meta:
+        model = StudentIntake
