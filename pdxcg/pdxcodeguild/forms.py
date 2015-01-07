@@ -470,7 +470,7 @@ class StudentIntakeForm(forms.ModelForm):
         self.helper.form_class = 'form-horizontal'
         self.helper.label_class = 'col-lg-3'
         self.helper.field_class = 'col-lg-7'
-        self.helper.layout = Layout('name', 'email_address', 'git_hub', 'student_bio', 'student_goals')
+        self.helper.layout = Layout('name', 'email_address', 'instructor_name', 'git_hub', 'student_bio', 'student_goals')
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Submit'))
 
@@ -482,6 +482,12 @@ class StudentIntakeForm(forms.ModelForm):
 
     email_address = forms.EmailField(
         label="Email:",
+        max_length=80,
+        required=True,
+    )
+
+    instructor_name = forms.CharField(
+        label="Instructor's Name:",
         max_length=80,
         required=True,
     )

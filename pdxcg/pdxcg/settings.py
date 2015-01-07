@@ -142,6 +142,15 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 STATIC_URL = '/static/'
 
+AKISMET_SECRET_API_KEY = '96824e9c0145'
+
+ZINNIA_SPAM_CHECKER_BACKENDS = (
+    'zinnia.spam_checker.backends.long_enough',
+    'zinnia.spam_checker.backends.automattic',
+)
+
+
+
 try:
     from local_settings import *
 except ImportError:

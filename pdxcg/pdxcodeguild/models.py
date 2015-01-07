@@ -41,5 +41,6 @@ class StudentIntake(models.Model):
     name = models.CharField(max_length=255)
     email_address = models.EmailField(max_length=255)
     git_hub = models.URLField(max_length=255)
+    instructor_name = models.CharField(max_length=255)
     student_bio = models.TextField(max_length=2000)
-    student_goals = models.CharField(max_length=2000)
+    student_goals = models.TextField(max_length=2000)
