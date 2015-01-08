@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 
 from pybb.models import Category, Forum, Topic, Post, Profile, Attachment, PollAnswer
 
-from pybb import compat, util
+#from pybb import compat, util
 username_field = compat.get_username_field()
 
 
