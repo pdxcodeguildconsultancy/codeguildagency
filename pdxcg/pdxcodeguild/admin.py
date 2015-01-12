@@ -6,9 +6,9 @@ from django.forms import ModelForm, Textarea
 
 
 class StudentIntakeAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email_address']
+    list_display = ['name', 'email_address', 'instructor_name']
     fieldsets = ((None, {
-            'fields': ('name', 'email_address', 'git_hub')
+            'fields': ('name', 'email_address', 'instructor_name', 'git_hub')
         }),
         ('Advanced options', {
             'classes': ('wide',),

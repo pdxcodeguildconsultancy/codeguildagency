@@ -4,7 +4,7 @@ from crispy_forms.layout import Submit
 from crispy_forms.bootstrap import InlineRadios
 from django.core.validators import RegexValidator
 from django.forms.extras.widgets import SelectDateWidget
-
+from captcha.fields import ReCaptchaField
 from .models import NewStudentApplication, StudentIntake
 
 
@@ -275,7 +275,7 @@ class Contact(forms.Form):
         self.helper.label_class = 'col-lg-3'
         self.helper.field_class = 'col-lg-7'
         self.helper.layout = Layout("full_name", 'email_address', 'phone_number', InlineRadios('best_contact'),
-                                    'message')
+                                    'message', 'captcha')
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Submit'))
 
@@ -311,6 +311,10 @@ class Contact(forms.Form):
         label="What can we help you achieve?",
         required=True,
         widget=forms.Textarea
+    )
+
+    captcha = ReCaptchaField(
+        attrs={'theme': 'clean'}
     )
 
 
