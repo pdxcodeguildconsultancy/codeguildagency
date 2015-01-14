@@ -5,7 +5,8 @@ from crispy_forms.bootstrap import InlineRadios
 from django.core.validators import RegexValidator
 from django.forms.extras.widgets import SelectDateWidget
 from captcha.fields import ReCaptchaField
-from .models import NewStudentApplication, StudentIntake
+import datetime
+from .models import NewStudentApplication, StudentIntake, SkillAssessment
 
 
 class NewStudentApp(forms.ModelForm):
@@ -20,6 +21,7 @@ class NewStudentApp(forms.ModelForm):
         ('No', 'No'),
     )
     BIRTH_YEARS = (
+        2015,
         2014,
         2013,
         2012,
@@ -85,59 +87,7 @@ class NewStudentApp(forms.ModelForm):
         1952,
         1951,
         1950,
-        1949,
-        1948,
-        1947,
-        1946,
-        1945,
-        1944,
-        1943,
-        1942,
-        1941,
-        1940,
-        1939,
-        1938,
-        1937,
-        1936,
-        1935,
-        1934,
-        1933,
-        1932,
-        1931,
-        1930,
-        1929,
-        1928,
-        1927,
-        1926,
-        1925,
-        1924,
-        1923,
-        1922,
-        1921,
-        1920,
-        1919,
-        1918,
-        1917,
-        1916,
-        1915,
-        1914,
-        1913,
-        1912,
-        1911,
-        1910,
-        1909,
-        1908,
-        1907,
-        1906,
-        1905,
-        1904,
-        1903,
-        1902,
-        1901,
-        1900,
     )
-
-
 
     phone_regex = RegexValidator(
         regex=r'^\+?1?\d{9,15}$',
@@ -474,7 +424,8 @@ class StudentIntakeForm(forms.ModelForm):
         self.helper.form_class = 'form-horizontal'
         self.helper.label_class = 'col-lg-3'
         self.helper.field_class = 'col-lg-7'
-        self.helper.layout = Layout('name', 'email_address', 'instructor_name', 'git_hub', 'student_bio', 'student_goals')
+        self.helper.layout = Layout('name', 'email_address', 'instructor_name', 'git_hub', 'student_bio',
+                                    'student_goals')
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Submit'))
 
@@ -516,3 +467,306 @@ class StudentIntakeForm(forms.ModelForm):
 
     class Meta:
         model = StudentIntake
+
+
+class SkillAssessmentForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SkillAssessmentForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-3'
+        self.helper.field_class = 'col-lg-7'
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+    name = forms.CharField(
+        label="Name:",
+        max_length=80,
+        required=True,
+    )
+
+    email_address = forms.EmailField(
+        label="Email:",
+        max_length=80,
+        required=True,
+    )
+
+    instructor_name = forms.CharField(
+        label="Instructor's Name:",
+        max_length=80,
+        required=True,
+    )
+    date = forms.DateField(widget=SelectDateWidget(), initial=datetime.date.today())
+    skill_level = forms.ChoiceField(
+        choices=(
+            ('1. Little to no knowledge.', "1. Little to no knowledge."),
+            ('2. A general understanding that allows you to get work done.',
+             "2. A general understanding that allows you to get work done."),
+            ('3. You are very knowledgeable.', "3. You are very knowledgeable."),
+        ),
+        label="Please check the number that best matches your skill level.",
+        widget=forms.RadioSelect,
+    )
+
+    # General Skills
+    management = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Computer Management Creating, Copying, Moving and Deleting Files and Folders",
+        widget=forms.RadioSelect,
+    )
+
+    internals = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Computer Internals (RAM, Disks, CPU, etc)",
+        widget=forms.RadioSelect,
+    )
+
+    command_line = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Command Line (cd, ls/dir, cp/copy, md/mkdir, etc)",
+        widget=forms.RadioSelect,
+    )
+
+    networking = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Computer Networking (DNS, IP Addresses, etc)",
+        widget=forms.RadioSelect,
+    )
+
+    written_communication = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="General Written Communication",
+        widget=forms.RadioSelect,
+    )
+
+    math = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="General Math (Pre Algebra)",
+        widget=forms.RadioSelect,
+    )
+
+    logic = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="General Logic (Reasoning, Deduction)",
+        widget=forms.RadioSelect,
+    )
+
+    spreadsheets = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Spreadsheets (Excel, etc)",
+        widget=forms.RadioSelect,
+    )
+
+    user_databases = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="User Databases (MS Access, etc)",
+        widget=forms.RadioSelect,
+    )
+
+    editors_ide = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Code Editors and IDE's",
+        widget=forms.RadioSelect,
+    )
+
+    html = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="HTML",
+        widget=forms.RadioSelect,
+    )
+
+    css = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="CSS",
+        widget=forms.RadioSelect,
+    )
+
+    # Code Skills
+    variables_datatypes = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Variables and Datatypes (String, Int, Etc)",
+        widget=forms.RadioSelect,
+    )
+
+    flow_control = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Flow Control (If, then, else, switch, case)",
+        widget=forms.RadioSelect,
+    )
+
+    functions = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Functions",
+        widget=forms.RadioSelect,
+    )
+
+    classes_objects = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Classes and Objects",
+        widget=forms.RadioSelect,
+    )
+
+    design_patterns = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Design Patterns (MVC, etc)",
+        widget=forms.RadioSelect,
+    )
+
+    debugging = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Debugging",
+        widget=forms.RadioSelect,
+    )
+
+    source_control = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Source code control",
+        widget=forms.RadioSelect,
+    )
+
+    profiling_performance_optimization = forms.ChoiceField(
+        choices=(
+            ('1', "1"),
+            ('2', "2"),
+            ('3', "3"),
+            ('4', "4"),
+            ('5', "5"),
+        ),
+        label="Profiling and performance optimization",
+        widget=forms.RadioSelect,
+    )
+
+    what_do_you_hope_we_cover = forms.CharField(
+        label='What do you hope to cover?',
+        required=False,
+        widget=forms.Textarea,
+    )
+
+    what_skills_do_you_want_to_acquire = forms.CharField(
+        label='What skills do you want to acquire?',
+        required=False,
+        widget=forms.Textarea,
+    )
+
+    projects_applications_in_mind = forms.CharField(
+        label='What projects and practical applications do you have in mind?',
+        required=False,
+        widget=forms.Textarea,
+    )
+
+    class Meta:
+        model = SkillAssessment

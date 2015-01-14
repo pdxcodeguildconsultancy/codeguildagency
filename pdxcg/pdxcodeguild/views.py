@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, Context
 from django.shortcuts import render_to_response
 from django.core.mail import send_mail, BadHeaderError
-from .forms import Comment, Contact, StudentIntakeForm, NewStudentApp
+from .forms import Comment, Contact, StudentIntakeForm, NewStudentApp, SkillAssessmentForm
 
 
 def index(request):
@@ -276,3 +276,20 @@ def student_apply(request):
     context_dict = {'form': form}
 
     return render_to_response('student_apply.html', context_dict, context)
+
+
+def skill_assessment(request):
+    context = RequestContext(request)
+    if request.method == 'GET':
+        form = SkillAssessmentForm()
+    else:
+        # A POST request: Handle Form Upload
+        form = SkillAssessmentForm(request.POST)  # Bind data from request.POST into a PostForm
+
+        # If data is valid, proceeds to create a new post and redirect the user
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/thanks/')
+    context_dict = {'form': form}
+
+    return render_to_response('skillassessment.html', context_dict, context)
