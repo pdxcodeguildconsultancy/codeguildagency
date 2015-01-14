@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import RegexValidator
-
+import datetime
 
 class NewStudentApplication(models.Model):
     # regex for valid international phone number
@@ -44,3 +44,38 @@ class StudentIntake(models.Model):
     instructor_name = models.CharField(max_length=255)
     student_bio = models.TextField(max_length=2000)
     student_goals = models.TextField(max_length=2000)
+
+
+class SkillAssessment(models.Model):
+    name = models.CharField(max_length=255)
+    email_address = models.EmailField(max_length=255)
+    instructor_name = models.CharField(max_length=255)
+    date = models.DateField()
+    skill_level = models.CharField(max_length=255)
+
+    # General Skills
+    management = models.CharField(max_length=255)
+    internals = models.CharField(max_length=255)
+    command_line = models.CharField(max_length=255)
+    networking = models.CharField(max_length=255)
+    written_communication = models.CharField(max_length=255)
+    math = models.CharField(max_length=255)
+    logic = models.CharField(max_length=255)
+    spreadsheets = models.CharField(max_length=255)
+    user_databases = models.CharField(max_length=255)
+    editors_ide = models.CharField(max_length=255)
+    html = models.CharField(max_length=255)
+    css = models.CharField(max_length=255)
+
+    # Code Skills
+    variables_datatypes = models.CharField(max_length=255)
+    flow_control = models.CharField(max_length=255)
+    functions = models.CharField(max_length=255)
+    classes_objects = models.CharField(max_length=255)
+    design_patterns = models.CharField(max_length=255)
+    debugging = models.CharField(max_length=255)
+    source_control = models.CharField(max_length=255)
+    profiling_performance_optimization = models.CharField(max_length=255)
+    what_do_you_hope_we_cover = models.TextField(max_length=2000)
+    what_skills_do_you_want_to_acquire = models.TextField(max_length=2000)
+    projects_applications_in_mind = models.TextField(max_length=2000)

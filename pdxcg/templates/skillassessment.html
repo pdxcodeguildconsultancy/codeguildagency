@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load i18n sekizai_tags %}
+{% block body_block %}
+    <section class="wrapper style1">
+        <div class="container">
+            <div id="content">
+
+                <h2 style="text-align:center">{% trans "Skill Assessment" %}</h2>
+
+
+
+                <div style="border: 0; height: 2px; background: #fff; background-image: -webkit-linear-gradient(left, #fff, #fff, #fff); background-image: -moz-linear-gradient(left, #fff, #fff, #fff); background-image:     -ms-linear-gradient(left, #fff, #fff, #fff); background-image: -o-linear-gradient(left, #fff, #fff, #fff);"></div>
+                <br/>
+                {% crispy form %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+
