@@ -4,10 +4,13 @@ from django.shortcuts import render_to_response
 from django.core.mail import send_mail, BadHeaderError
 from .forms import Comment, Contact, StudentIntakeForm, NewStudentApp, SkillAssessmentForm
 
+NEXT_DAY_CLASS_DATE = 'April 6th'
+NEXT_NIGHT_CLASS_DATE = 'March 16th'
+
 
 def index(request):
     context = RequestContext(request)
-    context_dict = {}
+    context_dict = {'next_night_class_date': NEXT_NIGHT_CLASS_DATE, 'next_day_class_date': NEXT_DAY_CLASS_DATE}
 
     return render_to_response('index.html', context_dict, context)
 
@@ -131,14 +134,14 @@ def individualized(request):
 
 def jrdevbootcamp(request):
     context = RequestContext(request)
-    context_dict = {}
+    context_dict = {'next_night_class_date': NEXT_NIGHT_CLASS_DATE, 'next_day_class_date': NEXT_DAY_CLASS_DATE}
 
     return render_to_response('jrdevbootcamp.html', context_dict, context)
 
 
 def evening_bootcamp(request):
     context = RequestContext(request)
-    context_dict = {}
+    context_dict = {'next_night_class_date': NEXT_NIGHT_CLASS_DATE, 'next_day_class_date': NEXT_DAY_CLASS_DATE}
 
     return render_to_response('evening-bootcamp.html', context_dict, context)
 

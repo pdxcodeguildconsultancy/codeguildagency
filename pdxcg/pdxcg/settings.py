@@ -64,6 +64,8 @@ COMPRESS_JS_FILTERS = ['compressor.filters.template.TemplateFilter',
                        'compressor.filters.jsmin.JSMinFilter',
                        ]
 
+COMPRESS_REBUILD_TIMEOUT = [60]
+
 MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
 
 MARKITUP_SET = 'markitup/sets/markdown'
