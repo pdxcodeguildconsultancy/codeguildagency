@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block body_block %}
-    <section id="banner">
+    <section id="banner" xmlns="http://www.w3.org/1999/html">
         <header>
-
 
 
             <img src="{{ STATIC_URL }}images/guild_logo_orange.png" class="img-logo">
@@ -20,7 +19,7 @@
                         <em><strong style="color: #f57b20">Day Class Starts {{ next_day_class_date }}<br>
                             Evening Class Starts {{ next_night_class_date }}</strong></em>
 
-                        <p>Apply now to our 12-week day or 16 week evening full immersion Developer Bootcamp. They
+                        <p><a href="{% url 'apply' %}">Apply now</a> to our 12-week day or 16 week evening full immersion Developer Bootcamp. They
                             combine individual projects, pair programming and group study to give you the skills and
                             habits you need to succeed in the growing tech industry.</p>
 
@@ -53,24 +52,47 @@
                 </section>
                 <section class="4u">
                     <div class="box highlight">
-                        <h3>PDX Code Guild Professional Services<br>
-                            ---<br>
-                            Your Vision; Our Team.<br>
-                            The Leverage to Deliver Now!</h3>
+                        <h3>Intro to Programming </h3>
+                        <em><strong style="color: #f57b20">Beginner Class Starts March 2nd</strong></em>
 
-                        <p>
-                        <ul>
-                            <li>• Application Development for all platforms.</li>
-                            <li>• Improve your process with custom software</li>
-                            <li>• Leverage our team of experienced experts and new local talent</li>
-                            <li>• Launch your startup faster</li>
-                        </ul>
-                        <a href="{% url 'contact' %}">Contact Options</a>
+                        <p>Are you interested in learning computer programming but not sure if it's for you? Are you
+                            thinking about joining a coding bootcamp and want to test the waters?</p>
+
+                        <p>PDX Code Guild's Introduction to Programming is a two week 36 hour hands on class that
+                            teaches you the basics of Python programming. With short lectures and fun challenges we will
+                            introduce you to the concepts needed to start your journey to becoming a master
+                            programmer.<br></p>
+
+                        <p>This two week class will be held Monday, Tuesday and Thursday from 5:30 PM to 8:30 PM.
+                            Tuition is $450.<br>
+                            <a href="{% url 'introapply' %}" class="button">Apply Now</a>
                         </p>
                     </div>
                 </section>
             </div>
         </div>
+{#    <div class="container">#}
+{#            <div class="row double">#}
+{#                                <section class="12u">#}
+{#                                    <div class="box highlight">#}
+{#                                        <h3>PDX Code Guild Professional Services<br>#}
+{#                                            ---<br>#}
+{#                                            Your Vision; Our Team.<br>#}
+{#                                            The Leverage to Deliver Now!</h3>#}
+{##}
+{#                                        <p>#}
+{#                                        <ul>#}
+{#                                            <li>• Application Development for all platforms.</li>#}
+{#                                            <li>• Improve your process with custom software</li>#}
+{#                                            <li>• Leverage our team of experienced experts and new local talent</li>#}
+{#                                            <li>• Launch your startup faster</li>#}
+{#                                        </ul>#}
+{#                                        <a href="{% url 'contact' %}">Contact Options</a>#}
+{#                                        </p>#}
+{#                                    </div>#}
+{#                                </section>#}
+{#            </div>#}
+{#        </div>#}
     </section>
 
     <section class="wrapper style2">

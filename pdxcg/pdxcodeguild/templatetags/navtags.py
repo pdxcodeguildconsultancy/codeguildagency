@@ -11,7 +11,10 @@ def active(context, pattern_or_urlname):
         pattern = '^' + reverse(pattern_or_urlname)
     except NoReverseMatch:
         pattern = pattern_or_urlname
-    path = context['request'].path
-    if re.search(pattern, path):
-        return 'current'
-    return ''
+    try:
+        path = context['request'].path
+        if re.search(pattern, path):
+            return 'current'
+        return ''
+    except:
+        pass

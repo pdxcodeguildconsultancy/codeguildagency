@@ -1,8 +1,11 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, Context
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.core.mail import send_mail, BadHeaderError
 from .forms import Comment, Contact, StudentIntakeForm, NewStudentApp, SkillAssessmentForm
+import stripe
+from django.conf import settings
+from django.template.loader import render_to_string
 
 NEXT_DAY_CLASS_DATE = 'April 6th'
 NEXT_NIGHT_CLASS_DATE = 'March 16th'
@@ -64,6 +67,78 @@ def apply(request):
     context_dict = {'form': form}
 
     return render_to_response('apply.html', context_dict, context)
+
+
+def intro_apply(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        stripe.api_key = settings.STRIPE_SECRET
+        token = request.POST['stripeToken']
+        amount = 45000
+        email = request.POST['email']
+        phone = request.POST['phone']
+        address = request.POST['address']
+        city = request.POST['city']
+        state = request.POST['state']
+        zip_code = request.POST['zip']
+        goals = request.POST['goals']
+
+        try:
+            charge = stripe.Charge.create(
+                amount=amount,  # amount in cents
+                currency="usd",
+                card=token,
+                description="PDX Code Guild's Intro to Programming"
+            )
+
+            name = charge['card']['name']
+            payment = charge['amount'] / 100
+            context_dict = {'name': name, 'payment': payment}
+            from django.core.mail import EmailMultiAlternatives, EmailMessage
+            # ################################################
+            # Email to Students
+            # ################################################
+            subject, from_email, to = "Hi %s, thanks for signing up for our Intro to Programming class!" % name, \
+                                      "codeguildpayments@pdxcodeguild.com", \
+                                      email
+            html_content = render_to_string('introclassemail.html', context_dict)
+            msg_student = EmailMessage(subject, html_content, from_email, [to])
+            msg_student.content_subtype = 'html'
+            msg_student.send()
+
+            #################################################
+            # Email to Staff
+            #################################################
+            subject, from_email, to = '%s has signed up for the Intro to Programming class.' % name, 'forms@pdxcodeguild.com', \
+                                      'chris@pdxcodeguild.com'
+            text_content = '''Name: %s
+            Email address: %s
+            Phone number: %s
+            Address: \n
+            %s
+            %s, %s %s
+            What are your goals for this class?\n
+            %s
+            ''' % (name, email, phone, address, city, state, zip_code, goals)
+            html_content = 'Name: %s <br>' \
+                           'Email address: %s<br>' \
+                           'Phone number: %s<br>' \
+                           'Address: <br>' \
+                           '%s<br>' \
+                           '%s, %s %s<br>' \
+                           'What are your goals for this class?<br>' \
+                           '%s' % (name, email, phone, address, city, state, zip_code, goals)
+            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+            return render(request, 'payment_thanks.html', context_dict)
+        except stripe.CardError, e:
+            # The card has been declined
+            pass
+
+    context_dict = {'stripe_key': settings.STRIPE_PUBLISHABLE}
+
+    return render_to_response('intro_apply.html', context_dict, context)
 
 
 def intake(request):
@@ -181,6 +256,13 @@ def thanks(request):
     return render_to_response('thanks.html', context_dict, context)
 
 
+def payment_thanks(request):
+    context = RequestContext(request)
+    context_dict = {}
+
+    return render_to_response('payment_thanks.html', context_dict, context)
+
+
 def value(request):
     context = RequestContext(request)
     context_dict = {}
@@ -200,6 +282,7 @@ def pythonquiz(request):
     context_dict = {}
 
     return render_to_response('pythonquiz.html', context_dict, context)
+
 
 def student_comment(request):
     context = RequestContext(request)
@@ -228,7 +311,7 @@ def student_comment(request):
 
             from django.core.mail import EmailMultiAlternatives
 
-            subject, from_email, to = 'A new student comment form has been filled out.', 'forms@pdxcodeguild.com',\
+            subject, from_email, to = 'A new student comment form has been filled out.', 'forms@pdxcodeguild.com', \
                                       'chris.charles.jones@gmail.com'
             text_content = '''Name: %s
             Email address: %s
@@ -246,8 +329,12 @@ def student_comment(request):
             Overall teacher rating: %s
             What can we do in the future to improve this class?: \n %s \n
             Is there any other suggestion or issues you would like to bring up?: \n %s
-            ''' % (name, email_address, first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, message1, message2)
-            html_content = 'Name: %s<br>Email address: %s<br>Please rate the following on a scale of 1 to 4.<br>1 = Poor, 2 = Fair, 3 = Good, 4 = Excellent<br>Depth of the Knowledge of the subject: %s<br>Presentation Skills: %s<br>Sincerity, Commitment, Regularity and Punctuality: %s<br>Syllabus Coverage: %s<br>Ability to Clarify doubts, teaching with relevant examples: %s<br>Ability to relate the course to real life situations: %s<br>Ability to generate interest: %s<br>Content and length of lectures: %s<br>Ability to command and control the class: %s<br>Overall teacher rating: %s<br>What can we do in the future to improve this class?: <br>%s <br>Is there any other suggestion or issues you would like to bring up?: <br>%s' % (name, email_address, first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, message1, message2)
+            ''' % (
+            name, email_address, first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, message1,
+            message2)
+            html_content = 'Name: %s<br>Email address: %s<br>Please rate the following on a scale of 1 to 4.<br>1 = Poor, 2 = Fair, 3 = Good, 4 = Excellent<br>Depth of the Knowledge of the subject: %s<br>Presentation Skills: %s<br>Sincerity, Commitment, Regularity and Punctuality: %s<br>Syllabus Coverage: %s<br>Ability to Clarify doubts, teaching with relevant examples: %s<br>Ability to relate the course to real life situations: %s<br>Ability to generate interest: %s<br>Content and length of lectures: %s<br>Ability to command and control the class: %s<br>Overall teacher rating: %s<br>What can we do in the future to improve this class?: <br>%s <br>Is there any other suggestion or issues you would like to bring up?: <br>%s' % (
+            name, email_address, first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, message1,
+            message2)
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
             msg.attach_alternative(html_content, "text/html")
             msg.send()

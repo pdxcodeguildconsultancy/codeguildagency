@@ -6,8 +6,6 @@ DATABASE_PATH = os.path.join(PROJECT_PATH, 'backup_pdxdjango.db')
 TEMPLATES = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
 STATIC_DIRS = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'static'))
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
     'default': {
@@ -24,10 +22,21 @@ STATIC_ROOT = '../staticfiles/'
 STATICFILES_DIRS = (
     STATIC_DIRS,
 )
-print STATIC_DIRS
+
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = '../../media/'
 MEDIA_URL = '/media/'
 
 PYBB_ATTACHMENT_UPLOAD_TO = '../../media/attachments/'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'chris.charles.jones@gmail.com'
+
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+try:
+    from noupload import *
+except ImportError:
+    pass
