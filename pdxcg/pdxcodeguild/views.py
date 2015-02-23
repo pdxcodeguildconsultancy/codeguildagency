@@ -109,6 +109,7 @@ def intro_apply(request):
             #################################################
             # Email to Staff
             #################################################
+            # TODO make sure this is sending email to admin.
             subject, from_email, to = '%s has signed up for the Intro to Programming class.' % name, 'forms@pdxcodeguild.com', \
                                       'chris@pdxcodeguild.com'
             text_content = '''Name: %s
@@ -181,7 +182,35 @@ def intake(request):
 
 def contact(request):
     context = RequestContext(request)
-    context_dict = {}
+    if request.method == 'POST':
+        form = Contact()
+        if form.is_valid():
+            full_name = form.cleaned_data['full_name']
+            phone_number = form.cleaned_data['phone_number']
+            email_address = form.cleaned_data['email_address']
+            best_contact = form.cleaned_data['best_contact']
+            message = form.cleaned_data['message']
+
+            from django.core.mail import EmailMultiAlternatives
+
+            subject, from_email, to = '%s filled out the Contact form' % full_name, 'forms@pdxcodeguild.com', \
+                                      'sheri.dover@gmail.com'
+            text_content = '''Name: %s
+            Phone number: %s
+            Email address: %s
+            How do you prefer to be contacted? %s
+            Message: \n %s''' % (full_name, phone_number, email_address, best_contact, message)
+            html_content = 'Full name: %s<br>Phone number: %s<br>Email address: %s<br>How do you prefer to be ' \
+                           'contacted? %s<br>Message:<br> %s' % (
+                               full_name, phone_number, email_address, best_contact, message)
+            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+            return HttpResponseRedirect('/thanks/')
+    else:
+
+        form = Contact()
+    context_dict = {'form': form}
 
     return render_to_response('contact.html', context_dict, context)
 
