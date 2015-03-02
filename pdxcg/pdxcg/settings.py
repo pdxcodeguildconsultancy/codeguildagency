@@ -1,23 +1,15 @@
-"""
-Django settings for pdxcg project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
-"""
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import stripe
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 ADMINS = (
-    ('Christopher Jones', 'chris@chrischarlesjones.net'),
+    ('Christopher Jones', 'chris@pdxcodeguild.com'),
 )
 MANAGERS = ADMINS
 
 SECRET_KEY = open(os.path.expanduser('~/.gallery-secret')).read().strip()
+
+
 
 ALLOWED_HOSTS = [
     'pdxcodeguild.com',
@@ -34,7 +26,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    #'django.contrib.comments',
     'django_comments',
     'allauth',
     'allauth.account',
@@ -44,7 +35,6 @@ INSTALLED_APPS = (
     'south',
     'sekizai',
     'markdown',
-    #'markitup',
     'pybb',
     'compressor',
     'django.contrib.sitemaps',
@@ -63,6 +53,8 @@ COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter',
 COMPRESS_JS_FILTERS = ['compressor.filters.template.TemplateFilter',
                        'compressor.filters.jsmin.JSMinFilter',
                        ]
+
+COMPRESS_REBUILD_TIMEOUT = [60]
 
 MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
 
@@ -149,9 +141,9 @@ ZINNIA_SPAM_CHECKER_BACKENDS = (
     'zinnia_akismet.akismet',
 )
 
-RECAPTCHA_PUBLIC_KEY = '6LcPVQATAAAAABSK0609v_qbN4GuIq-_QLKGtzMV'
-RECAPTCHA_PRIVATE_KEY = '6LcPVQATAAAAAHzUGgei6MmBfFy2zDxTZQ8nlxhX'
+
 try:
     from local_settings import *
 except ImportError:
     pass
+

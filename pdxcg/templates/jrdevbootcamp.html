@@ -6,7 +6,9 @@
             <div id="content">
 
                 <header>
-                    <h2 style="text-align:center">Developer Bootcamp</h2>
+                    <h2 style="text-align:center">Developer Bootcamp<br>
+                    <span style="font-style: italic">Next Class Starts {{ next_day_class_date }}</span></h2>
+
                 </header>
                 <article>
                     <h2>Ready to jumpstart your career in technology?</h2>
@@ -38,7 +40,7 @@
                 <article>
                     <header>
                         <h2>Looking for an evening class?</h2></header>
-                    <p>We have one starting May 26th click here for more info: <a href="{% url 'evening_bootcamp' %}">Evening
+                    <p>We have one starting {{ next_night_class_date }} click here for more info: <a href="{% url 'evening_bootcamp' %}">Evening
                         Developer Bootcamp</a></p>
                 </article>
                 <article>
